@@ -9,11 +9,12 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import HomePage from '../UserPage/UserPage';
+import HomePage from '../HomePage/HomePage';
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+// import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Games from '../Games/Games';
 
 import './App.css';
 
@@ -62,7 +63,7 @@ class App extends Component {
             be taken to the component and path supplied. */}
             <ProtectedRoute
               // with authRedirect:
-              // - if logged in, redirects to "/user"
+              // - if logged in, redirects to "/home"
               // - else shows LoginPage at /login
               exact
               path="/login"
@@ -71,14 +72,21 @@ class App extends Component {
             />
             <ProtectedRoute
               // with authRedirect:
-              // - if logged in, redirects to "/user"
+              // - if logged in, redirects to "/home"
               // - else shows RegisterPage at "/registration"
               exact
               path="/registration"
               component={RegisterPage}
               authRedirect="/home"
             />
+
             <ProtectedRoute
+              exact
+              path="/games"
+              component={Games}
+              authRedirect="/home"
+            />
+            {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
@@ -86,7 +94,7 @@ class App extends Component {
               path="/home"
               component={LandingPage}
               authRedirect="/home"
-            />
+            /> */}
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
