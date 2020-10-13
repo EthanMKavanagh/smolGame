@@ -24,6 +24,7 @@ CREATE TABLE "user" (
     "team_id" INT REFERENCES "team"
 );
 
+-- Just to see if it populates correctly. User will need to create profiles by registering through the app due to hashing/salting
 INSERT INTO "user" ("username", "password", "team_id")
 VALUES
     ('ethankavanagh', 'ethankavanagh', 1),
@@ -65,8 +66,7 @@ VALUES
     ('Nick Kavanagh', 13, 47, 'Strong Saftey', 4.11, 97, 1),
     ('Connor Johnson', 14, 12, 'Quarter Back', 5.4, 128, 1);
     
--- Drop Table Commands in case needed
---DROP TABLE "user";
---DROP TABLE "team";
---DROP TABLE "game";
---DROP TABLE "players";
+-- DROP TABLE "user";
+-- DROP TABLE "team";
+-- DROP TABLE "game";
+-- DROP TABLE "players";
