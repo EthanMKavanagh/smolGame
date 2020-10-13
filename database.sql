@@ -3,32 +3,31 @@
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
 
+-- TEAM TABLE
+CREATE TABLE "team" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR(256) NOT NULL,
+    "coach" VARCHAR(256) NOT NULL,
+    "image_url" VARCHAR(2000) NOT NULL
+);
+
+INSERT INTO "team" ("name", "coach", "image_url")
+VALUES
+    ('Wildcats', 'Dug Johnson', 'https://lh3.googleusercontent.com/proxy/aN8UuIgnuDk6wdhIUuik1xsnnKRWTsUqAk7l-caMSZPqPkm_wu5YSjyAcTomBOFMIJxHphYxLopD4D1hPrhOq8WwAhelX9bpDzdoCTuHLUvkzj143CrECW00MtFm9q1Xg3I7z_nge82cPabM');
 
 -- USER TABLE
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR(80) UNIQUE NOT NULL,
     "password" VARCHAR(1000) NOT NULL,
-    "authLevel" VARCHAR(256) DEFAULT 'USER'
+    "authLevel" VARCHAR(256) DEFAULT 'USER',
+    "team_id" INT REFERENCES "team"
 );
 
-INSERT INTO "user" ("username", "password")
+INSERT INTO "user" ("username", "password", "team_id")
 VALUES
-    ('ethankavanagh', 'ethankavanagh'),
-    ('nickkavanagh', 'nickkavanagh');
-
--- TEAM TABLE
-CREATE TABLE "team" (
-    "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR(256) NOT NULL,
-    "coach" VARCHAR(256) NOT NULL,
-    "image_url" VARCHAR(2000) NOT NULL,
-    "user_id" INT REFERENCES "user"
-);
-
-INSERT INTO "team" ("name", "coach", "image_url", "user_id")
-VALUES
-    ('Wildcats', 'Dug Johnson', 'https://lh3.googleusercontent.com/proxy/aN8UuIgnuDk6wdhIUuik1xsnnKRWTsUqAk7l-caMSZPqPkm_wu5YSjyAcTomBOFMIJxHphYxLopD4D1hPrhOq8WwAhelX9bpDzdoCTuHLUvkzj143CrECW00MtFm9q1Xg3I7z_nge82cPabM', 1);
+    ('ethankavanagh', 'ethankavanagh', 1),
+    ('nickkavanagh', 'nickkavanagh', 1);
 
 -- GAMES TABLE
 CREATE TABLE "game" (
@@ -65,3 +64,9 @@ INSERT INTO "players" ("name", "age", "number", "position", "height", "weight", 
 VALUES
     ('Nick Kavanagh', 13, 47, 'Strong Saftey', 4.11, 97, 1),
     ('Connor Johnson', 14, 12, 'Quarter Back', 5.4, 128, 1);
+    
+-- Drop Table Commands in case needed
+--DROP TABLE "user";
+--DROP TABLE "team";
+--DROP TABLE "game";
+--DROP TABLE "players";
