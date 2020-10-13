@@ -9,43 +9,45 @@ CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR(80) UNIQUE NOT NULL,
     "password" VARCHAR(1000) NOT NULL,
-    "authLevel" VARCHAR(256) DEFAULT "USER" NOT NULL
+    "authLevel" VARCHAR(256) DEFAULT 'USER'
 );
 
-INSERT INTO TABLE "user"
+INSERT INTO "user" ("username", "password")
 VALUES
     ('ethankavanagh', 'ethankavanagh'),
     ('nickkavanagh', 'nickkavanagh');
 
 -- TEAM TABLE
 CREATE TABLE "team" (
-    "id" PRIMARY SERIAL KEY,
+    "id" SERIAL PRIMARY KEY,
     "name" VARCHAR(256) NOT NULL,
     "coach" VARCHAR(256) NOT NULL,
+    "image_url" VARCHAR(2000) NOT NULL,
     "user_id" INT REFERENCES "user"
 );
 
-INSERT INTO "team"
+INSERT INTO "team" ("name", "coach", "image_url", "user_id")
 VALUES
-    ('Wildcats', 'Dug Johnson', 1);
+    ('Wildcats', 'Dug Johnson', 'https://lh3.googleusercontent.com/proxy/aN8UuIgnuDk6wdhIUuik1xsnnKRWTsUqAk7l-caMSZPqPkm_wu5YSjyAcTomBOFMIJxHphYxLopD4D1hPrhOq8WwAhelX9bpDzdoCTuHLUvkzj143CrECW00MtFm9q1Xg3I7z_nge82cPabM', 1);
 
 -- GAMES TABLE
 CREATE TABLE "game" (
-    "id" PRIMARY SERIAL KEY,
-    "touchdowns" INT,
-    "field_goals" INT,
-    "interceptions" INT,
-    "rushing_yards" INT,
-    "passing_yards" INT,
-    "recieving_yards" INT,
-    "isWin" BOOLEAN DEFUALT FALSE,
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR(256) NOT NULL,
+    "touchdowns" INT NOT NULL,
+    "field_goals" INT NOT NULL,
+    "interceptions" INT NOT NULL,
+    "rushing_yards" INT NOT NULL,
+    "passing_yards" INT NOT NULL,
+    "recieving_yards" INT NOT NULL,
+    "isWin" BOOLEAN,
     "team_id" INT REFERENCES "team"
 );
 
-INSERT INTO "game"
+INSERT INTO "game" ("name", "touchdowns", "field_goals", "interceptions", "rushing_yards", "passing_yards", "recieving_yards", "isWin", "team_id")
 VALUES
-    (3, 2, 1, 120, 94, 29, TRUE, 1),
-    (1, 4, 0, 48, 119, 57, FALSE, 1);
+    ('Game 1 @Home', 3, 2, 1, 120, 94, 29, TRUE, 1),
+    ('Game 2 @Lakeville', 1, 4, 0, 48, 119, 57, FALSE, 1);
 
 -- PLAYERS TABLE
 CREATE TABLE "players" (
@@ -59,7 +61,7 @@ CREATE TABLE "players" (
     "team_id" INT REFERENCES "team"
 );
 
-INSERT INTO "players"
+INSERT INTO "players" ("name", "age", "number", "position", "height", "weight", "team_id")
 VALUES
     ('Nick Kavanagh', 13, 47, 'Strong Saftey', 4.11, 97, 1),
     ('Connor Johnson', 14, 12, 'Quarter Back', 5.4, 128, 1);
