@@ -15,14 +15,19 @@ class AboutPage extends React.Component {
   }
 
   render() {
+    console.log('this.props.store.team', this.props.store.team);
     return (
-      <div>
-        <h1>We are the {this.props.store.team.name}</h1>
-        <h3>Coach: {this.props.store.team.coach}</h3>
-        <img src={this.props.store.team.image_url} alt='' />
-        <p>Bio:</p>
-        <p>{this.props.store.team.bio}</p>
-      </div>
+      <>
+        {this.props.store.team.map(team =>
+          <div>
+            <h1>We are the {team.name}</h1>
+            <h3>Coach: {team.coach}</h3>
+            <img src={team.image_url} alt='' />
+            <p>Bio:</p>
+            <p>{team.bio}</p>
+          </div>
+        )}
+      </>
     )
   }
 }
