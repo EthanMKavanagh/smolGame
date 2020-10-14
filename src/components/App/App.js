@@ -14,7 +14,7 @@ import InfoPage from '../InfoPage/InfoPage';
 // import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import Games from '../Games/Games';
+import GameList from '../GameList/GameList';
 
 import './App.css';
 
@@ -83,8 +83,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/games"
-              component={Games}
-              authRedirect="/home"
+              component={GameList}
             />
             {/* <ProtectedRoute
               // with authRedirect:

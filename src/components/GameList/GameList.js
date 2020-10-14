@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+import GameListItem from '../GameListItem/GameListItem';
+
 class Games extends Component {
 
     componentDidMount = () => {
@@ -17,11 +19,12 @@ class Games extends Component {
     render() {
         return (
             <div>
-                {this.props.game.map(game =>
+                {this.props.store.games.map(game =>
                     <>
-                        {/* <GameItem 
+                        <GameListItem
                             game={game}
-                        /> */}
+                            key={game.id}
+                        />
                     </>
                 )}
             </div>
