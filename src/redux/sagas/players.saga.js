@@ -1,21 +1,21 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-// Get all Games
-function* fetchGames() {
+// Get team
+function* fetchPlayers() {
     let response = yield axios({
         method: 'GET',
-        url: '/games'
+        url: '/players'
     });
 
     yield put({
-        type: 'SET_GAMES',
+        type: 'SET_PLAYERS',
         payload: response.data
     });
 }
 
-function* gamesSaga() {
-    yield takeLatest('FETCH_GAMES', fetchGames);
+function* playersSaga() {
+    yield takeLatest('FETCH_PLAYERS', fetchPlayers);
 }
   
-export default gamesSaga;
+export default playersSaga;
