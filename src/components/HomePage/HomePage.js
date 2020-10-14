@@ -60,14 +60,18 @@ class HomePage extends Component {
                       >
                         {player.number}
                       </TableCell>
-                      <TableCell 
-                        align='center'>
-                        <Button 
-                          color='secondary' 
-                          onClick={() => this.props.onDelete(player.id)}>
-                          Delete
-                        </Button>
-                      </TableCell>
+                      {this.props.store.user.authLevel === 'ADMIN' ?
+                        <TableCell 
+                          align='center'
+                        >
+                          <Button 
+                            color='secondary' 
+                            onClick={() => this.props.onDelete(player.id)}>
+                            Delete
+                          </Button>
+                        </TableCell> :
+                        <TableCell></TableCell>
+                      }
                   </TableRow>
                 )}
               </TableBody>
