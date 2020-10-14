@@ -36,14 +36,14 @@ class HomePage extends Component {
           <TableContainer>
             <Table aria-label="simple table">
               <TableHead>
-                  <TableRow>
-                      <TableCell align='center'>Name</TableCell>
-                      <TableCell align='center'>Number</TableCell>
-                      {this.props.store.user.authLevel === 'ADMIN' ?
-                        <TableCell align='center' className='buttonCell'>Delete</TableCell> :
-                        <TableCell></TableCell>
-                      }
-                  </TableRow>
+                <TableRow>
+                  <TableCell align='center'>Name</TableCell>
+                  <TableCell align='center'>Number</TableCell>
+                  {this.props.store.user.authLevel === 'ADMIN' ?
+                    <TableCell align='center' className='buttonCell'>Delete</TableCell> :
+                    <TableCell></TableCell>
+                  }
+                </TableRow>
               </TableHead>
               <TableBody>
                 {this.props.store.players.map(player =>

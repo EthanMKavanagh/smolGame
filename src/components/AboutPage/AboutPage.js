@@ -1,16 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+class AboutPage extends React.Component {
 
-const AboutPage = () => (
-  <div className="container">
-    <div>
-      <p>This about page is for anyone to read!</p>
-    </div>
-  </div>
-);
+  componentDidMount = () => {
+    this.getTeam();
+  }
 
-export default AboutPage;
+  getTeam = () => {
+    this.props.dispatch({
+      type: 'FETCH_TEAM'
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>We are the {this.props.store.team.name}</h1>
+        <h3>Coach: {this.props.store.team.coach}</h3>
+        <img src={this.props.store.team.image_url} alt='' />
+        <p>Bio:</p>
+        <p>{this.props.store.team.bio}</p>
+      </div>
+    )
+  }
+}
+
+export default connect(mapStoreToProps)(AboutPage);

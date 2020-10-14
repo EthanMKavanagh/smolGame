@@ -6,8 +6,8 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-  let queryString = `SELECT * FROM "games";`;
-  pool.query(queryString)
+  let queryString = `SELECT * FROM "games" WHERE "team_id" = $1;`;
+  pool.query(queryString, [req.user.team_id])
     .then(result => {
         res.send(result.rows);
     }).catch(err => {
