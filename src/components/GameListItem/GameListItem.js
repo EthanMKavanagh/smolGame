@@ -7,7 +7,7 @@ class GameListItem extends Component {
 
     render() {
         return (
-            <div>
+            <div key={this.props.game.id}>
                 <h1>{this.props.game.name}</h1>
                 { this.props.game.isWin ?
                     <h1>Win</h1> :

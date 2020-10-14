@@ -23,7 +23,6 @@ class HomePage extends Component {
   }
 
   render() {
-    console.log('this.props.store.team.id', this.props.store.team.id);
     return (
       <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
