@@ -15,8 +15,10 @@ import InfoPage from '../InfoPage/InfoPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import GameList from '../GameList/GameList';
+import AddPlayer from '../AddPlayer/AddPlayer';
 
 import './App.css';
+
 
 class App extends Component {
   componentDidMount() {
@@ -85,6 +87,13 @@ class App extends Component {
               path="/games"
               component={GameList}
             />
+
+            <ProtectedRoute
+              exact
+              path="/add-player"
+              component={AddPlayer}
+            />
+
             {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"

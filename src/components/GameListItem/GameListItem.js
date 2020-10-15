@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class GameListItem extends Component {
-
-
     render() {
         return (
             <div key={this.props.game.id}>

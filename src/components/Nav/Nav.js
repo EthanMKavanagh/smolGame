@@ -16,6 +16,8 @@ const Nav = (props) => {
     loginLinkData.text = 'Home';
   }
 
+  console.log('yuh', props.store.user);
+
   return (
     <div className="nav">
       <Link to="/home">
@@ -40,6 +42,18 @@ const Nav = (props) => {
               About The Team
             </Link>
 
+            {props.store.user.authLevel === 'ADMIN' ?
+              <>
+                <Link className="nav-link" to="/add-player">
+                  Add Player
+                </Link>
+
+                <Link className="nav-link" to="/add-game">
+                  Add Game
+                </Link>
+              </> :
+              <></>
+            }
 
             <LogOutButton className="nav-link"/>
             {/* <Link className="nav-link" to="/info">
