@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Button, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
+import { Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+
+import PlayerList from '../PlayerList/PlayerList';
 
 class HomePage extends Component {
   
@@ -46,32 +48,10 @@ class HomePage extends Component {
               </TableHead>
               <TableBody>
                 {this.props.store.players.map(player =>
-                  <TableRow key={player.id}>
-                      <TableCell 
-                        component='th' 
-                        scope='row'
-                        align='center'
-                      >
-                        {player.name}
-                      </TableCell>
-                      <TableCell 
-                        align='center'
-                      >
-                        {player.number}
-                      </TableCell>
-                      {this.props.store.user.authLevel === 'ADMIN' ?
-                        <TableCell 
-                          align='center'
-                        >
-                          <Button 
-                            color='secondary' 
-                            onClick={() => this.props.onDelete(player.id)}>
-                            Delete
-                          </Button>
-                        </TableCell> :
-                        <TableCell></TableCell>
-                      }
-                  </TableRow>
+                  <PlayerList 
+                    player={player}
+                    key={player.id}
+                  />
                 )}
               </TableBody>
             </Table>

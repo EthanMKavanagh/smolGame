@@ -20,9 +20,21 @@ router.post('/', (req, res) => {
                     VALUES ($1, $2, $3, $4, $5, $6, $7);`;
   pool.query(queryString, [req.body.name, req.body.age, req.body.number, req.body.position, req.body.height, req.body.weight, req.user.team_id])
     .then(result => {
-      res.send(result.rows)
+      res.send(201)
     }).catch(err => {
-      console.error('./players POST failed', err);
+      console.error('/players POST failed', err);
+      res.sendStatus(500);
+    });
+});
+
+// GET/:id
+router.get('/:id', (req, res) => {
+  let queryString = 'SELECT * FROM "players" WHERE "id" = $1;';
+  pool.query(queryString, [req.params.id])
+    .then(result => {
+      res.send(result.rows);
+    }).catch(err => {
+      console.error('/players GET/:id failed', err);
       res.sendStatus(500);
     });
 });

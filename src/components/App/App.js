@@ -17,8 +17,10 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import GameList from '../GameList/GameList';
 import AddPlayer from '../AddPlayer/AddPlayer';
 import AddGame from '../AddGame/AddGame';
+import PlayerProfile from '../PlayerProfile/PlayerProfile';
 
 import './App.css';
+
 
 
 class App extends Component {
@@ -101,6 +103,11 @@ class App extends Component {
               component={AddGame}
             />
 
+            <ProtectedRoute
+              exact
+              path="/player-profile"
+              component={PlayerProfile}
+            />
             {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"

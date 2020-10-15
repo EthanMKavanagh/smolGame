@@ -27,10 +27,24 @@ function* createNewPlayer(action) {
     });
 } // end createNewPlayer
 
+// GET/:id player
+function* fetchIndividualPlayer(action) {
+    let response = yield axios({
+        method: 'GET',
+        url: `/players/${action.payload}`
+    });
+
+    yield put({
+        type: 'SET_INDIVIDUAL_PLAYER',
+        payload: response.data
+    });
+} // end fetchIndividualPlayer
+
 // Intake all Saga calls for Players
 function* playersSaga() {
     yield takeLatest('FETCH_PLAYERS', fetchPlayers);
     yield takeLatest('CREATE_NEW_PLAYER', createNewPlayer);
+    yield takeLatest('FETCH_INDIVIDUAL_PLAYER', fetchIndividualPlayer);
 } // end playersSage
   
 export default playersSaga;
