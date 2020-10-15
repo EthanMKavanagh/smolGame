@@ -2,79 +2,100 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import {InputGroup, FormControl } from 'react-bootstrap'
+import { FormControl, Button } from 'react-bootstrap'
 
 
 class AddPlayer extends Component {
-  render() {
-    return (
-<div>
-  <InputGroup className="mb-3">
-    <InputGroup.Prepend>
-      <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl
-      placeholder="Username"
-      aria-label="Username"
-      aria-describedby="basic-addon1"
-    />
-  </InputGroup>
 
-  <InputGroup className="mb-3">
-    <FormControl
-      placeholder="Recipient's username"
-      aria-label="Recipient's username"
-      aria-describedby="basic-addon2"
-    />
-    <InputGroup.Append>
-      <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
-    </InputGroup.Append>
-  </InputGroup>
+    state = {
+        name: '',
+        number: '',
+        position: '',
+        age: '',
+        height: '',
+        weight: ''
+    } // end state
 
-  <label htmlFor="basic-url">Your vanity URL</label>
-  <InputGroup className="mb-3">
-    <InputGroup.Prepend>
-      <InputGroup.Text id="basic-addon3">
-        https://example.com/users/
-      </InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl id="basic-url" aria-describedby="basic-addon3" />
-  </InputGroup>
+    onChange = (event, propertyName) => {
+        this.setState({
+            ...this.state,
+            [propertyName]: event.target.value
+        });
+    } // end onChange
 
-  <InputGroup className="mb-3">
-    <InputGroup.Prepend>
-      <InputGroup.Text>$</InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl aria-label="Amount (to the nearest dollar)" />
-    <InputGroup.Append>
-      <InputGroup.Text>.00</InputGroup.Text>
-    </InputGroup.Append>
-  </InputGroup>
+    onAddPlayer = () => {
+        this.props.dispatch({
+            type: 'CREATE_NEW_PLAYER',
+            payload: this.state
+        });
+        this.setState({
+            name: '',
+            number: '',
+            position: '',
+            age: '',
+            height: '',
+            weight: ''
+        });
+    } // end onAddPlayer
 
-  <InputGroup>
-    <InputGroup.Prepend>
-      <InputGroup.Text>With textarea</InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl as="textarea" aria-label="With textarea" />
-  </InputGroup>
-  {/*  */}
-  <div>
-  <InputGroup className="mb-3">
-    <InputGroup.Prepend>
-      <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-    </InputGroup.Prepend>
-    <FormControl aria-label="Text input with checkbox" />
-  </InputGroup>
-  <InputGroup>
-    <InputGroup.Prepend>
-      <InputGroup.Radio aria-label="Radio button for following text input" />
-    </InputGroup.Prepend>
-    <FormControl aria-label="Text input with radio button" />
-  </InputGroup>
-</div>
-</div>
-    );
-  }
-}
+    render() {
+        return (
+            <div>
+                {/* Inputs for the New Player */}
+                <FormControl
+                    placeholder="Player Name"
+                    aria-label="Player Name"
+                    aria-describedby="basic-addon1"
+                    onChange={(event) => this.onChange(event, 'name')}
+                />
+
+                <span>
+                    <FormControl
+                        placeholder="Number"
+                        aria-label="Number"
+                        aria-describedby="basic-addon1"
+                        onChange={(event) => this.onChange(event, 'number')}
+                    />
+
+                    <FormControl
+                        placeholder="Position"
+                        aria-label="Position"
+                        aria-describedby="basic-addon1"
+                        onChange={(event) => this.onChange(event, 'position')}
+                    />
+                </span>
+
+                <FormControl
+                    placeholder="Age"
+                    aria-label="Age"
+                    aria-describedby="basic-addon1"
+                    onChange={(event) => this.onChange(event, 'age')}
+                />
+
+                <FormControl
+                    placeholder="Height"
+                    aria-label="Height"
+                    aria-describedby="basic-addon1"
+                    onChange={(event) => this.onChange(event, 'height')}
+                />
+
+                <FormControl
+                    placeholder="Weight"
+                    aria-label="Weight"
+                    aria-describedby="basic-addon1"
+                    onChange={(event) => this.onChange(event, 'weight')}
+                />
+
+                {/* Button to submit New Player */}
+                <Button 
+                    variant="success"
+                    onClick={this.onAddPlayer}
+                >
+                    Add
+                </Button>
+            </div>
+        ); // end return
+    } // end render
+} // end Component
 
 export default connect(mapStoreToProps)(AddPlayer);

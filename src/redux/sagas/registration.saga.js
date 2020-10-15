@@ -20,10 +20,11 @@ function* registerUser(action) {
     console.log('Error with user registration:', error);
     yield put({ type: 'REGISTRATION_FAILED' });
   }
-}
+} // end registerUser
 
+// Intake all Saga calls for Registration
 function* registrationSaga() {
   yield takeLatest('REGISTER', registerUser);
-}
+} // end registrationSaga
 
 export default registrationSaga;

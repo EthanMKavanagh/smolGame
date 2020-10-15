@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-// Get team
+// GET team
 function* fetchTeam() {
     let response = yield axios({
         method: 'GET',
@@ -12,10 +12,11 @@ function* fetchTeam() {
         type: 'SET_TEAM',
         payload: response.data
     });
-}
+} // end fetchTeam
 
+// Intake all Saga calls for Team
 function* teamSaga() {
     yield takeLatest('FETCH_TEAM', fetchTeam);
-}
+} // end teamSaga
   
 export default teamSaga;

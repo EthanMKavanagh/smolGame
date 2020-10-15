@@ -22,10 +22,11 @@ function* fetchUser() {
   } catch (error) {
     console.log('User get request failed', error);
   }
-}
+} //end fetchUser
 
+// Intake all Saga calls for User
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
-}
+} // end userSaga
 
 export default userSaga;
