@@ -6,9 +6,16 @@ class PlayerProfile extends Component {
   render() {
     return (
       <>
-        
-          <h1>{this.props.player.name}</h1>
-
+        {this.props.store.players.map(player =>
+          <>
+            <h1>{player.name}</h1>
+            <p>{player.age}</p>
+            <p>{player.number}</p>
+            <p>{player.position}</p>
+            <p>{player.height}</p>
+            <p>{player.weight}</p>
+          </>
+        )}
       </>
     );
   }
