@@ -16,6 +16,7 @@ class AddPlayer extends Component {
         weight: ''
     } // end state
 
+    // Set state to inputs
     onChange = (event, propertyName) => {
         this.setState({
             ...this.state,
@@ -23,6 +24,7 @@ class AddPlayer extends Component {
         });
     } // end onChange
 
+    // Add player to DB
     onAddPlayer = () => {
         this.props.dispatch({
             type: 'CREATE_NEW_PLAYER',

@@ -16,6 +16,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import GameList from '../GameList/GameList';
 import AddPlayer from '../AddPlayer/AddPlayer';
+import AddGame from '../AddGame/AddGame';
 
 import './App.css';
 
@@ -92,6 +93,12 @@ class App extends Component {
               exact
               path="/add-player"
               component={AddPlayer}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/add-game"
+              component={AddGame}
             />
 
             {/* <ProtectedRoute
