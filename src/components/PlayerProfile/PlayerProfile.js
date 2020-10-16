@@ -8,12 +8,12 @@ class PlayerProfile extends Component {
       <>
         {this.props.store.players.map(player =>
           <>
-            <h1>{player.name}</h1>
-            <p>{player.age}</p>
-            <p>{player.number}</p>
-            <p>{player.position}</p>
-            <p>{player.height}</p>
-            <p>{player.weight}</p>
+            <h1>Name: {player.name}</h1>
+            <p>Age: {player.age}</p>
+            <p>Number: {player.number}</p>
+            <p>Position: {player.position}</p>
+            <p>Height: {player.height}</p>
+            <p>Weight: {player.weight}</p>
           </>
         )}
       </>

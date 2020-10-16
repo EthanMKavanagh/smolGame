@@ -29,7 +29,7 @@ class HomePage extends Component {
       <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
         {this.props.store.user.authLevel === 'ADMIN' ?
-          <p>Invite others by giving them your Team ID: {this.props.store.team.id}</p> :
+          <p>Invite others by giving them your Team ID: {this.props.store.user.team_id}</p> :
           <></>
         }
 

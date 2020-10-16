@@ -45,7 +45,7 @@ class EditTeam extends Component {
                             label="Team Name" 
                             variant="outlined"
                             type="text"
-                            placeholder=""
+                            placeholder={team.name}
                             onChange={(event) => this.onChange(event, 'name')}
                         />
 
@@ -55,7 +55,7 @@ class EditTeam extends Component {
                             label="Coach" 
                             variant="outlined"
                             type="text"
-                            placeholder=""
+                            placeholder={team.coach}
                             onChange={(event) => this.onChange(event, 'coach')}
                         />
                         
@@ -65,7 +65,7 @@ class EditTeam extends Component {
                             label="Image URL" 
                             variant="outlined"
                             type="text"
-                            placeholder=""
+                            placeholder={team.image_url}
                             onChange={(event) => this.onChange(event, 'image_url')}
                         />
 
@@ -75,7 +75,7 @@ class EditTeam extends Component {
                             label="Boi" 
                             variant="outlined"
                             type="text"
-                            placeholder=""
+                            placeholder={team.bio}
                             onChange={(event) => this.onChange(event, 'bio')}
                         />
 
