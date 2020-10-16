@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
 // PUT
 router.put('/:id', (req, res) => {
   let queryString = `UPDATE "team" SET "name" = $1, "coach" = $2, "image_url" = $3, "bio" = $4;`;
-  console.log('req.body', req.body);
   console.log('req.params', req.params);
   pool.query(queryString, [req.body.name, req.body.coach, req.body.image_url, req.body.bio])
     .then(result => {

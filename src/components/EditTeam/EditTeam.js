@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import {Button, TextField} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -12,7 +13,7 @@ class EditTeam extends Component {
         bio: ''
     }
 
-    onSave = (id) => {
+    onSave = () => {
         this.props.dispatch({
             type: 'CHANGE_TEAM',
             payload: this.state
@@ -82,7 +83,7 @@ class EditTeam extends Component {
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={() => this.onSave(team.id)}
+                            onClick={() => this.onSave()}
                         >
                             Save
                         </Button>
@@ -93,4 +94,4 @@ class EditTeam extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(EditTeam);
+export default connect(mapStoreToProps)(withRouter(EditTeam));

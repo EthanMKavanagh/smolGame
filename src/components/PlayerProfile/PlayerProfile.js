@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Button} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class PlayerProfile extends Component {
+
+  onEditPlayer = () => {
+    this.props.history.push('/edit/player')
+  }
+
   render() {
     return (
       <>
@@ -14,9 +20,19 @@ class PlayerProfile extends Component {
             <p>Position: {player.position}</p>
             <p>Height: {player.height}</p>
             <p>Weight: {player.weight}</p>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.onEditPlayer}
+            >
+              Edit
+            </Button>
           </>
         )}
       </>
+
+
+
     );
   }
 }

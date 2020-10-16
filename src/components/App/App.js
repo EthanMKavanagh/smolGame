@@ -23,8 +23,6 @@ import EditPlayer from '../EditPlayer/EditPlayer';
 
 import './App.css';
 
-
-
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
