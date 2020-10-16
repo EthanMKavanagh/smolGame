@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import { Button } from 'react-bootstrap';
-import { TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio } from '@material-ui/core';
+import { TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Button } from '@material-ui/core';
 
 class AddGame extends Component {
 
@@ -54,7 +53,7 @@ class AddGame extends Component {
                 label="Name" 
                 variant="outlined"
                 type='text'
-                placeholder='Name'
+                placeholder='Game 1 @City'
                 onChange={(event) => this.onChange(event, 'name')}
             />
 
@@ -63,7 +62,7 @@ class AddGame extends Component {
                 label="Score" 
                 variant="outlined"
                 type='text'
-                placeholder="Score"
+                placeholder="## - ##"
                 onChange={(event) => this.onChange(event, 'score')}
             />
 
@@ -130,7 +129,8 @@ class AddGame extends Component {
             </FormControl>
 
             <Button
-                variant="success"
+                variant="contained"
+                color="primary"
                 onClick={this.onAddGame}
             >
                 Add

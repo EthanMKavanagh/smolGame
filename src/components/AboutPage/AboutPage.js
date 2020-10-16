@@ -1,5 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import {Button} from '@material-ui/core';
+import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class AboutPage extends React.Component {
@@ -14,6 +16,15 @@ class AboutPage extends React.Component {
     });
   }
 
+  onEditTeam = (id) => {
+    this.props.dispatch({
+      type: 'FETCH_INDIVIDUAL_TEAM',
+      payload: id
+    });
+
+    this.props.history.push('/edit-team');
+  }
+  
   render() {
     return (
       <>
@@ -24,6 +35,13 @@ class AboutPage extends React.Component {
             <img src={team.image_url} alt='' />
             <p>Bio:</p>
             <p>{team.bio}</p>
+            <Button
+              variant="contained"
+              color="primary"
+              // onClick={this.onEditTeam(team.id)}
+            >
+              Edit
+            </Button>
           </div>
         )}
       </>
@@ -31,4 +49,4 @@ class AboutPage extends React.Component {
   }
 }
 
-export default connect(mapStoreToProps)(AboutPage);
+export default connect(mapStoreToProps)(withRouter(AboutPage));

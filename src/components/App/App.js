@@ -18,6 +18,7 @@ import GameList from '../GameList/GameList';
 import AddPlayer from '../AddPlayer/AddPlayer';
 import AddGame from '../AddGame/AddGame';
 import PlayerProfile from '../PlayerProfile/PlayerProfile';
+import EditTeam from '../EditTeam/EditTeam';
 
 import './App.css';
 
@@ -107,6 +108,12 @@ class App extends Component {
               exact
               path="/player-profile"
               component={PlayerProfile}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/edit-team"
+              component={EditTeam}
             />
             {/* <ProtectedRoute
               // with authRedirect:

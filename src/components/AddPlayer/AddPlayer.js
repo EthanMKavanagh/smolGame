@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import { FormControl, Button } from 'react-bootstrap'
+import {TextField, Button, Grid} from '@material-ui/core';
 
 
 class AddPlayer extends Component {
 
+    // State
     state = {
         name: '',
         number: '',
@@ -42,60 +43,97 @@ class AddPlayer extends Component {
 
     render() {
         return (
-            <div>
+            <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+                spacing={3}
+            >
                 {/* Inputs for the New Player */}
-                <FormControl
-                    placeholder="Player Name"
-                    aria-label="Player Name"
-                    aria-describedby="basic-addon1"
-                    onChange={(event) => this.onChange(event, 'name')}
-                />
-
-                <span>
-                    <FormControl
+                <Grid item xs={6}>
+                    <TextField
+                        className="addPlayerForm"
+                        id="outlined-basic"
+                        label="Name" 
+                        variant="outlined"
+                        type="text"
+                        placeholder="Name"
+                        onChange={(event) => this.onChange(event, "name")}
+                    />
+                </Grid>
+                
+                <Grid item xs={6}>
+                    <TextField
+                        className="addPlayerForm"
+                        id="outlined-basic"
+                        label="Number" 
+                        variant="outlined"
+                        type="number"
                         placeholder="Number"
-                        aria-label="Number"
-                        aria-describedby="basic-addon1"
-                        onChange={(event) => this.onChange(event, 'number')}
+                        onChange={(event) => this.onChange(event, "number")}
                     />
+                </Grid>
 
-                    <FormControl
+                <Grid item>
+                    <TextField
+                        className="addPlayerForm"
+                        id="outlined-basic"
+                        label="Position" 
+                        variant="outlined"
+                        type="text"
                         placeholder="Position"
-                        aria-label="Position"
-                        aria-describedby="basic-addon1"
-                        onChange={(event) => this.onChange(event, 'position')}
+                        onChange={(event) => this.onChange(event, "position")}
                     />
-                </span>
+                </Grid>
 
-                <FormControl
-                    placeholder="Age"
-                    aria-label="Age"
-                    aria-describedby="basic-addon1"
-                    onChange={(event) => this.onChange(event, 'age')}
-                />
+                <Grid item>
+                    <TextField
+                        className="addPlayerForm"
+                        id="outlined-basic"
+                        label="Age" 
+                        variant="outlined"
+                        type="number"
+                        placeholder="Age"
+                        onChange={(event) => this.onChange(event, "age")}
+                    />
+                </Grid>
 
-                <FormControl
-                    placeholder="Height"
-                    aria-label="Height"
-                    aria-describedby="basic-addon1"
-                    onChange={(event) => this.onChange(event, 'height')}
-                />
+                <Grid item>
+                    <TextField
+                        className="addPlayerForm"
+                        id="outlined-basic"
+                        label="Height" 
+                        variant="outlined"
+                        type="number"
+                        placeholder="Height"
+                        onChange={(event) => this.onChange(event, "height")}
+                    />
+                </Grid>
 
-                <FormControl
-                    placeholder="Weight"
-                    aria-label="Weight"
-                    aria-describedby="basic-addon1"
-                    onChange={(event) => this.onChange(event, 'weight')}
-                />
+                <Grid item>
+                    <TextField
+                        className="addPlayerForm"
+                        id="outlined-basic"
+                        label="Weight" 
+                        variant="outlined"
+                        type="text"
+                        placeholder="Weight"
+                        onChange={(event) => this.onChange(event, "weight")}
+                    />
+                </Grid>
 
                 {/* Button to submit New Player */}
-                <Button 
-                    variant="success"
-                    onClick={this.onAddPlayer}
-                >
-                    Add
-                </Button>
-            </div>
+                <Grid item>
+                    <Button 
+                        variant="contained"
+                        color="primary"
+                        onClick={this.onAddPlayer}
+                    >
+                        Add
+                    </Button>
+                </Grid>
+            </Grid>
         ); // end return
     } // end render
 } // end Component
