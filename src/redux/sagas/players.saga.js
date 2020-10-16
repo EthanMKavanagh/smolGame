@@ -40,11 +40,24 @@ function* fetchIndividualPlayer(action) {
     });
 } // end fetchIndividualPlayer
 
+// DELETE/:id player
+function* deletePlayer(action) {
+    yield axios({
+        method: 'DELETE',
+        url: `/players/${action.payload}`,
+    });
+
+    yield put({
+        type: 'FETCH_PLAYERS'
+    });
+} // end deletePlayer
+
 // Intake all Saga calls for Players
 function* playersSaga() {
     yield takeLatest('FETCH_PLAYERS', fetchPlayers);
     yield takeLatest('CREATE_NEW_PLAYER', createNewPlayer);
     yield takeLatest('FETCH_INDIVIDUAL_PLAYER', fetchIndividualPlayer);
+    yield takeLatest('DELETE_PLAYER', deletePlayer);
 } // end playersSage
   
 export default playersSaga;

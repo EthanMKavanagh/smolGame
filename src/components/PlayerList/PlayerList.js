@@ -16,18 +16,27 @@ class PlayerList extends Component {
         this.props.history.push('/player-profile');
     }
 
+    onDelete = (id) => {
+        this.props.dispatch({
+            type: 'DELETE_PLAYER',
+            payload: id
+        });
+    }
+
     render() {
         return (
-            <TableRow key={this.props.player.id} onClick={this.onPlayerProfile}>
+            <TableRow key={this.props.player.id}>
                 <TableCell 
                 component='th' 
                 scope='row'
                 align='center'
+                onClick={this.onPlayerProfile}
                 >
                 {this.props.player.name}
                 </TableCell>
                 <TableCell 
                 align='center'
+                onClick={this.onPlayerProfile}
                 >
                 {this.props.player.number}
                 </TableCell>
@@ -36,8 +45,8 @@ class PlayerList extends Component {
                     align='center'
                 >
                     <Button 
-                        color='secondary' 
-                        onClick={() => this.props.onDelete(this.props.player.id)}
+                        color='secondary'
+                        onClick={() => this.onDelete(this.props.player.id)}
                     >
                         Delete
                     </Button>
