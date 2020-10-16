@@ -15,18 +15,6 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET/:id
-// router.get('/:id', (req, res) => {
-//   let queryText = `SELECT * FROM "team" WHERE "id" = $1;`;
-//   pool.query(queryText, [req.params.id])
-//     .then(result => {
-//       res.send(result.rows);
-//     }).catch(err => {
-//       console.error('/team/:id GET failed', err);
-//       res.sendStatus(500);
-//     });
-// });
-
 // PUT
 router.put('/:id', (req, res) => {
   let queryString = `UPDATE "team" SET "name" = $1, "coach" = $2, "image_url" = $3, "bio" = $4;`;

@@ -23,6 +23,7 @@ class AboutPage extends React.Component {
   render() {
     return (
       <>
+        {/* Mapping through the team to render their information */}
         {this.props.store.team.map(team =>
           <div key={team.id}>
             <h1>We are the {team.name}</h1>
@@ -30,13 +31,17 @@ class AboutPage extends React.Component {
             <img src={team.image_url} alt='' />
             <p>Bio:</p>
             <p>{team.bio}</p>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.onEditTeam}
-            >
-              Edit
-            </Button>
+            {/* Edit button for Team accessible to only Admins */}
+            { this.props.store.user.authLevel === 'ADMIN' ?
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.onEditTeam}
+              >
+                Edit
+              </Button> :
+              <></>
+            }
           </div>
         )}
       </>
