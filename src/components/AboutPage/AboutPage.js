@@ -16,13 +16,8 @@ class AboutPage extends React.Component {
     });
   }
 
-  onEditTeam = (id) => {
-    this.props.dispatch({
-      type: 'FETCH_INDIVIDUAL_TEAM',
-      payload: id
-    });
-
-    this.props.history.push('/edit-team');
+  onEditTeam = () => {
+    this.props.history.push(`/edit/team`);
   }
   
   render() {
@@ -38,7 +33,7 @@ class AboutPage extends React.Component {
             <Button
               variant="contained"
               color="primary"
-              // onClick={this.onEditTeam(team.id)}
+              onClick={this.onEditTeam}
             >
               Edit
             </Button>

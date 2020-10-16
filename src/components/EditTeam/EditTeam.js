@@ -15,7 +15,7 @@ class EditTeam extends Component {
     onSave = (id) => {
         this.props.dispatch({
             type: 'CHANGE_TEAM',
-            payload: id
+            payload: this.state
         });
         this.setState({
             name: '',
@@ -39,25 +39,23 @@ class EditTeam extends Component {
             <>
                 {this.props.store.team.map(team =>
                     <div key={team.id}>
-                        <h1>We are the</h1>
-                        <TextField 
+                        <h1>Team: {team.name}</h1>
+                        <TextField
                             id="outlined-basic"
                             label="Team Name" 
                             variant="outlined"
                             type="text"
                             placeholder=""
-                            value={team.name}
                             onChange={(event) => this.onChange(event, 'name')}
                         />
 
-                        <h3>Coach:</h3>
+                        <h3>Coach: {team.coach}</h3>
                         <TextField 
                             id="outlined-basic"
                             label="Coach" 
                             variant="outlined"
                             type="text"
                             placeholder=""
-                            value={team.coach}
                             onChange={(event) => this.onChange(event, 'coach')}
                         />
                         
@@ -68,25 +66,23 @@ class EditTeam extends Component {
                             variant="outlined"
                             type="text"
                             placeholder=""
-                            value={team.image_url}
                             onChange={(event) => this.onChange(event, 'image_url')}
                         />
 
-                        <p>Bio:</p>
+                        <p>Bio: {team.bio}</p>
                         <TextField 
                             id="outlined-basic"
                             label="Boi" 
                             variant="outlined"
                             type="text"
                             placeholder=""
-                            value={team.bio}
                             onChange={(event) => this.onChange(event, 'bio')}
                         />
 
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={this.onSave(team.id)}
+                            onClick={() => this.onSave(team.id)}
                         >
                             Save
                         </Button>

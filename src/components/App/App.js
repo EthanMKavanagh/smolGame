@@ -112,7 +112,7 @@ class App extends Component {
 
             <ProtectedRoute
               exact
-              path="/edit-team"
+              path="/edit/team"
               component={EditTeam}
             />
             {/* <ProtectedRoute
