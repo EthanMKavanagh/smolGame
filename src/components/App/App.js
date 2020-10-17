@@ -22,6 +22,7 @@ import EditTeam from '../EditTeam/EditTeam';
 import EditPlayer from '../EditPlayer/EditPlayer';
 import CreateTeam from '../CreateTeam/CreateTeam';
 
+import mapStoreToProps from '../../redux/mapStoreToProps';
 import './App.css';
 
 
@@ -38,6 +39,7 @@ class App extends Component {
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/login" />
+            
 
             {/* Visiting localhost:3000/about will show the about page. */}
             <ProtectedRoute
@@ -148,4 +150,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default connect(mapStoreToProps)(App);

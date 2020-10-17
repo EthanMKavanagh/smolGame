@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class RegisterForm extends Component {
@@ -20,6 +21,12 @@ class RegisterForm extends Component {
         team_id: this.state.team_id
       }
     });
+    // if (this.props.store.user.team_id === null) {
+    //   this.props.history.push('/create-team');
+    // }
+    // else {
+    //   this.props.history.push('/home');
+    // }
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -27,15 +34,6 @@ class RegisterForm extends Component {
       [propertyName]: event.target.value,
     });
   };
-
-  // onLogin = () => {
-  //   if(this.props.store.user.team_id === null) {
-  //     this.props.history.push('/create-team');
-  //   }
-  //   else {
-  //     this.props.history.push('/home');
-  //   }
-  // }
 
   render() {
     return (
@@ -77,17 +75,16 @@ class RegisterForm extends Component {
               type="number"
               name="team_id"
               value={this.state.team_id}
-              required
               onChange={this.handleInputChangeFor('team_id')}
             />
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" onClick={this.onLogin}/>
+          <input className="btn" type="submit" name="submit" value="Register"/>
         </div>
       </form>
     );
   }
 }
 
-export default connect(mapStoreToProps)(RegisterForm);
+export default connect(mapStoreToProps)(withRouter(RegisterForm));
