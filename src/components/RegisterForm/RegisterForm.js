@@ -28,6 +28,15 @@ class RegisterForm extends Component {
     });
   };
 
+  // onLogin = () => {
+  //   if(this.props.store.user.team_id === null) {
+  //     this.props.history.push('/create-team');
+  //   }
+  //   else {
+  //     this.props.history.push('/home');
+  //   }
+  // }
+
   render() {
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
@@ -74,7 +83,7 @@ class RegisterForm extends Component {
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" />
+          <input className="btn" type="submit" name="submit" value="Register" onClick={this.onLogin}/>
         </div>
       </form>
     );

@@ -20,8 +20,10 @@ import AddGame from '../AddGame/AddGame';
 import PlayerProfile from '../PlayerProfile/PlayerProfile';
 import EditTeam from '../EditTeam/EditTeam';
 import EditPlayer from '../EditPlayer/EditPlayer';
+import CreateTeam from '../CreateTeam/CreateTeam';
 
 import './App.css';
+
 
 class App extends Component {
   componentDidMount() {
@@ -119,6 +121,12 @@ class App extends Component {
               exact
               path="/edit/player"
               component={EditPlayer}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/create-team"
+              component={CreateTeam}
             />
             {/* <ProtectedRoute
               // with authRedirect:

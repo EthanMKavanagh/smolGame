@@ -27,10 +27,24 @@ function* changeTeam(action) {
     });
 } // end changeTeam
 
+// POST team
+function* createTeam(action) {
+    axios({
+        method: 'POST',
+        url: `/team`,
+        data: action.payload
+    });
+
+    yield put({
+        type: 'FETCH_TEAM'
+    });
+} // end createTeam
+
 // Intake all Saga calls for Team
 function* teamSaga() {
     yield takeLatest('FETCH_TEAM', fetchTeam);
     yield takeLatest('CHANGE_TEAM', changeTeam);
+    yield takeLatest('CREATE_TEAM', createTeam);
 } // end teamSaga
   
 export default teamSaga;
