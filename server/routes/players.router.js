@@ -27,20 +27,6 @@ router.post('/', (req, res) => {
     });
 });
 
-// GET/:id
-router.get('/:id', (req, res) => {
-  console.log('req.params GET/:id', req.params);
-  let queryString = 'SELECT * FROM "players" WHERE "id" = $1;';
-  pool.query(queryString, [req.params.id])
-    .then(result => {
-      console.log('result.rows', result.rows);
-      res.send(result.rows);
-    }).catch(err => {
-      console.error('/players GET/:id failed', err);
-      res.sendStatus(500);
-    });
-});
-
 // DELETE/:id
 router.delete('/:id', (req, res) => {
   let queryString = 'DELETE FROM "players" WHERE "id" = $1;';
@@ -55,8 +41,6 @@ router.delete('/:id', (req, res) => {
 
 // PUT/:id
 router.put('/:id', (req, res) => {
-  console.log('req.body', req.body);
-  console.log('req.params', req.params);
 
   let age = Number(req.body.age);
   let number = Number(req.body.number);

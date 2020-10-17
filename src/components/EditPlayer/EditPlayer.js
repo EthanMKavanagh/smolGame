@@ -51,7 +51,7 @@ class EditPlayer extends Component {
   render() {
     return (
       <>
-        {this.props.store.players.map(player =>
+        {this.props.store.individualPlayer.map(player =>
           <>
             <h1>Name: {player.name}</h1>
             <TextField 

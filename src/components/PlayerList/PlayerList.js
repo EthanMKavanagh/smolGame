@@ -7,12 +7,10 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class PlayerList extends Component {
 
     onPlayerProfile = () => {
-        console.log(this.props.player.id);
         this.props.dispatch({
             type: 'FETCH_INDIVIDUAL_PLAYER',
             payload: this.props.player.id
         });
-
         this.props.history.push('/player-profile');
     }
 
