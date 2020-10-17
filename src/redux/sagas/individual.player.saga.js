@@ -14,9 +14,24 @@ function* fetchIndividualPlayer(action) {
     });
 } // end fetchIndividualPlayer
 
+// PUT/:id player
+function* changePlayer(action) {
+    console.log(action.payload);
+    yield axios({
+        method: 'PUT',
+        url: `/individual/player/${action.payload.id}`,
+        data: action.payload
+    });
+
+    yield put({
+        type: 'FETCH_PLAYERS'
+    });
+} // end changePlayer
+
 // Intake all Saga calls for individualPlayers
 function* playersSaga() {
     yield takeLatest('FETCH_INDIVIDUAL_PLAYER', fetchIndividualPlayer);
+    yield takeLatest('CHANGE_PLAYER', changePlayer);
 } // end playersSage
   
 export default playersSaga;
