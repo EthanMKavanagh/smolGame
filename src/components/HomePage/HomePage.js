@@ -43,7 +43,7 @@ class HomePage extends Component {
                     <TableCell className="tableHeading">Name</TableCell>
                     <TableCell align="center" className="tableHeading">Number</TableCell>
                     {this.props.store.user.authLevel === 'ADMIN' ?
-                      <TableCell className="tableHeading" align="center" className="buttonCell">Delete</TableCell> :
+                      <TableCell className="tableHeading" align="center">Delete</TableCell> :
                       <TableCell className="tableHeading"></TableCell>
                     }
                   </TableRow>

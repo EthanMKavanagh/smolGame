@@ -1,3 +1,7 @@
 .tableHeading {
-    width: 100px;
+    width: 50px;
+}
+
+.tableRow {
+    width: 200px;
 }

@@ -1,3 +1,26 @@
-/* .addPlayerForm {
-    align-items: center;
-} */
+.addPlayerForm {
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 220px;
+}
+
+.form {
+    align-content: center;
+    margin-left: -35px;
+}
+
+.addPlayerPaper {
+    margin: auto;
+    width: 900px;
+}
+
+.title {
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+.editBtn {
+    padding-bottom: 5px;
+}

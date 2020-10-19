@@ -29,12 +29,14 @@ class PlayerList extends Component {
                 <TableCell 
                     component="th"
                     scope="row"
+                    className="tableRow"
                     onClick={this.onPlayerProfile}
                 >
                     {this.props.player.name}
                 </TableCell>
                 <TableCell 
                     align="center"
+                    className="tableRow"
                     onClick={this.onPlayerProfile}
                 >
                     {this.props.player.number}
@@ -42,6 +44,7 @@ class PlayerList extends Component {
                     {this.props.store.user.authLevel === 'ADMIN' ?
                 <TableCell 
                     align="center"
+                    className="tableRow"
                 >
                     <Button 
                         color="secondary"
