@@ -43,7 +43,6 @@ class AboutPage extends React.Component {
               <Grid 
                 item
                 xs={5}
-                className="teamPic"
               >
                 <img src={team.image_url} alt='' />
               </Grid>
@@ -55,6 +54,19 @@ class AboutPage extends React.Component {
                 <h1>{team.name}</h1>
                 <h3>Coach: {team.coach}</h3>
                 <p>{team.bio}</p>
+              </Grid>
+            </Grid>
+            <Grid 
+              container
+              direction="row"
+              justify="flex-end"
+              alignItems="flex-start"
+            >
+              <Grid 
+                item
+                xs={1}
+                className="editAboutTeam"
+              >
                 {/* Edit button for Team accessible to only Admins */}
                 {this.props.store.user.authLevel === 'ADMIN' ?
                   <Button
