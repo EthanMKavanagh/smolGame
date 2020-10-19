@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
+// import {sizing, spacing} from '@material-ui/system';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import PlayerList from '../PlayerList/PlayerList';
@@ -35,28 +36,28 @@ class HomePage extends Component {
         }
 
         <Paper elevation={3}>
-          <TableContainer>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell className="playerListTable">Name</TableCell>
-                  <TableCell className="playerListTable" align="center">Number</TableCell>
-                  {this.props.store.user.authLevel === 'ADMIN' ?
-                    <TableCell align="center" className="buttonCell playerListTable">Delete</TableCell> :
-                    <TableCell></TableCell>
-                  }
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {this.props.store.players.map(player =>
-                  <PlayerList 
-                    player={player}
-                    key={player.id}
-                  />
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
+            <TableContainer>
+              <Table aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell className="tableHeading">Name</TableCell>
+                    <TableCell align="center" className="tableHeading">Number</TableCell>
+                    {this.props.store.user.authLevel === 'ADMIN' ?
+                      <TableCell className="tableHeading" align="center" className="buttonCell">Delete</TableCell> :
+                      <TableCell className="tableHeading"></TableCell>
+                    }
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {this.props.store.players.map(player =>
+                    <PlayerList 
+                      player={player}
+                      key={player.id}
+                    />
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
         </Paper>
       </div>
     );

@@ -5,6 +5,8 @@ import {withRouter} from 'react-router-dom';
 import {Paper, Grid} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+import './AboutPage.css';
+
 class AboutPage extends React.Component {
 
   componentDidMount = () => {
@@ -27,7 +29,7 @@ class AboutPage extends React.Component {
         {/* Mapping through the team to render their information */}
         {this.props.store.team.map(team =>
           <Paper 
-            elevation={3} 
+            elevation={3}
             key={team.id}
             className="aboutTeamPaper"
           >

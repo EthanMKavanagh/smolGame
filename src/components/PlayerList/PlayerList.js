@@ -27,24 +27,21 @@ class PlayerList extends Component {
         return (
             <TableRow key={this.props.player.id}>
                 <TableCell 
-                component="th"
-                scope="row"
-                className="playerListTable"
-                onClick={this.onPlayerProfile}
+                    component="th"
+                    scope="row"
+                    onClick={this.onPlayerProfile}
                 >
-                {this.props.player.name}
+                    {this.props.player.name}
                 </TableCell>
-                <TableCell 
-                align="center"
-                className="playerListTable"
-                onClick={this.onPlayerProfile}
-                >
-                {this.props.player.number}
-                </TableCell>
-                {this.props.store.user.authLevel === 'ADMIN' ?
                 <TableCell 
                     align="center"
-                    className="playerListTable"
+                    onClick={this.onPlayerProfile}
+                >
+                    {this.props.player.number}
+                </TableCell>
+                    {this.props.store.user.authLevel === 'ADMIN' ?
+                <TableCell 
+                    align="center"
                 >
                     <Button 
                         color="secondary"
@@ -53,7 +50,7 @@ class PlayerList extends Component {
                         Delete
                     </Button>
                 </TableCell> :
-                <TableCell className="playerListTable"></TableCell>
+                <TableCell></TableCell>
                 }
             </TableRow>
         );
