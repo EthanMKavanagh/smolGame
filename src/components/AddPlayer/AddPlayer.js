@@ -51,7 +51,7 @@ class AddPlayer extends Component {
                 spacing={3}
             >
                 {/* Inputs for the New Player */}
-                <Grid item xs={6}>
+                <Grid item>
                     <TextField
                         className="addPlayerForm"
                         id="outlined-basic"
@@ -63,7 +63,7 @@ class AddPlayer extends Component {
                     />
                 </Grid>
                 
-                <Grid item xs={6}>
+                <Grid item>
                     <TextField
                         className="addPlayerForm"
                         id="outlined-basic"
