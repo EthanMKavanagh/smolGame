@@ -14,7 +14,6 @@ class GameListItem extends Component {
                 key={this.props.game.id}>
                 <Grid
                     container
-                    className="gameHeading"
                     direction="row"
                     justify="space-around"
                     alignItems="flex-start"

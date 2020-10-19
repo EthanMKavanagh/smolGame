@@ -1,0 +1,9 @@
+.aboutTeamPaper {
+    width: 600px;
+    margin: auto;
+}
+
+.teamPic {
+    margin-top: 100px;
+    justify-content: flex-end;
+}
