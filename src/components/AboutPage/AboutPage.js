@@ -42,6 +42,7 @@ class AboutPage extends React.Component {
             >
               <Grid 
                 item
+                xs={5}
                 className="teamPic"
               >
                 <img src={team.image_url} alt='' />
@@ -49,7 +50,7 @@ class AboutPage extends React.Component {
 
               <Grid 
                 item 
-                xs={4}
+                xs={6}
               >
                 <h1>{team.name}</h1>
                 <h3>Coach: {team.coach}</h3>
