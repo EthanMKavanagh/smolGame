@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import {TextField, Button, Grid} from '@material-ui/core';
@@ -45,10 +45,10 @@ class AddPlayer extends Component {
         return (
             <Grid
                 container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                spacing={3}
+                // direction="row"
+                // justify="center"
+                // alignItems="center"
+                // spacing={3}
             >
                 {/* Inputs for the New Player */}
                 <Grid item>
