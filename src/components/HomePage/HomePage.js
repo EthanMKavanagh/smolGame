@@ -4,9 +4,10 @@ import { Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import PlayerList from '../PlayerList/PlayerList';
+import './HomePage.css';
 
 class HomePage extends Component {
-  
+
   componentDidMount = () => {
     this.getTeam();
     this.getPlayers();
@@ -33,15 +34,15 @@ class HomePage extends Component {
           <></>
         }
 
-        <Paper elevation={3} className='paperTable'>
+        <Paper elevation={3}>
           <TableContainer>
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align='center'>Name</TableCell>
-                  <TableCell align='center'>Number</TableCell>
+                  <TableCell className="playerListTable">Name</TableCell>
+                  <TableCell className="playerListTable" align="center">Number</TableCell>
                   {this.props.store.user.authLevel === 'ADMIN' ?
-                    <TableCell align='center' className='buttonCell'>Delete</TableCell> :
+                    <TableCell align="center" className="buttonCell playerListTable">Delete</TableCell> :
                     <TableCell></TableCell>
                   }
                 </TableRow>
