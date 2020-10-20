@@ -1,4 +1,4 @@
-.addPlayerForm {
+.addGameForm {
     margin-bottom: 20px;
 }
 
@@ -10,9 +10,9 @@
     margin-left: -35px;
 }
 
-.addPlayerPaper {
+.addGamePaper {
     margin: auto;
-    width: 900px;
+    width: 940px;
 }
 
 .title {

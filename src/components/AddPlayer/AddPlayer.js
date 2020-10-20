@@ -150,7 +150,6 @@ class AddPlayer extends Component {
                     </Grid>
                 </Grid>
 
-                    {/* Button to submit New Player */}
                 <Grid 
                     container
                     direction="row"
@@ -162,6 +161,7 @@ class AddPlayer extends Component {
                         xs={1}
                         className="editBtn"
                     >
+                        {/* Button to submit New Player */}
                         <Button
                             variant="contained"
                             color="primary"

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Button, Paper, Grid} from '@material-ui/core';
 
-import { TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Button } from '@material-ui/core';
+import './AddGame.css';
 
 class AddGame extends Component {
 
@@ -47,97 +48,163 @@ class AddGame extends Component {
 
   render() {
     return (
-        <div>
-            <TextField
-                id="outlined-basic"
-                label="Name" 
-                variant="outlined"
-                type='text'
-                placeholder='Game 1 @City'
-                onChange={(event) => this.onChange(event, 'name')}
-            />
-
-            <TextField
-                id="outlined-basic"
-                label="Score" 
-                variant="outlined"
-                type='text'
-                placeholder="## - ##"
-                onChange={(event) => this.onChange(event, 'score')}
-            />
-
-            <TextField
-                id="outlined-basic"
-                label="Touchdowns" 
-                variant="outlined"
-                type='text'
-                placeholder="Touchdowns"
-                onChange={(event) => this.onChange(event, 'touchdowns')}
-            />
-
-            <TextField
-                id="outlined-basic"
-                label="Field Goals" 
-                variant="outlined"
-                type='text'
-                placeholder="Field Goals"
-                onChange={(event) => this.onChange(event, 'field_goals')}
-            />
-
-            <TextField
-                id="outlined-basic"
-                label="Interceptions" 
-                variant="outlined"
-                type='text'
-                placeholder="Interceptions"
-                onChange={(event) => this.onChange(event, 'interceptions')}
-            />
-
-            <TextField
-                id="outlined-basic"
-                label="Rushing Yards" 
-                variant="outlined"
-                type='text'
-                placeholder="Rushing Yards"
-                onChange={(event) => this.onChange(event, 'rushing_yards')}
-            />
-
-            <TextField
-                id="outlined-basic"
-                label="Passing Yards" 
-                variant="outlined"
-                type='text'
-                placeholder="Passing Yards"
-                onChange={(event) => this.onChange(event, 'passing_yards')}
-            />
-
-            <TextField
-                id="outlined-basic"
-                label="Receiving Yards" 
-                variant="outlined"
-                type='text'
-                placeholder="Receiving Yards"
-                onChange={(event) => this.onChange(event, 'receiving_yards')}
-            />
-
-            <FormControl component="fieldset">
-                <FormLabel component="legend">Outcome</FormLabel>
-                <RadioGroup row aria-label="Outcome" name="Outcome" value={this.value} onChange={(event) => this.onChange(event, 'isWin')}>
-                    <FormControlLabel value="TRUE" control={<Radio />} label="Win" />
-                    <FormControlLabel value="FALSE" control={<Radio />} label="Loss" />
-                </RadioGroup>
-            </FormControl>
-
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={this.onAddGame}
+        <Paper
+            elevation={3}
+            className="addGamePaper"
+        >
+            <h1 className="title">Add Game Form</h1>
+            <Grid
+                container
+                direction="row"
+                justify="space-evenly"
+                alignItems="center"
+                className="form"
             >
-                Add
-            </Button>
-        </div>
-    );
-  }
+                <Grid 
+                    item 
+                    xs={2}
+                >
+                    <div className="addGameForm">
+                        <TextField
+                            className="input"
+                            id="outlined-basic"
+                            label="Name" 
+                            variant="outlined"
+                            type='text'
+                            placeholder='Game 1 @City'
+                            onChange={(event) => this.onChange(event, 'name')}
+                        />
+                    </div>
+
+                    <div className="addGameForm">
+                        <TextField
+                            className="input"
+                            id="outlined-basic"
+                            label="Score" 
+                            variant="outlined"
+                            type='text'
+                            placeholder="## - ##"
+                            onChange={(event) => this.onChange(event, 'score')}
+                        />
+                    </div>
+
+                    <div className="addGameForm">
+                        <TextField
+                            className="input"
+                            id="outlined-basic"
+                            label="Touchdowns" 
+                            variant="outlined"
+                            type='text'
+                            placeholder="Touchdowns"
+                            onChange={(event) => this.onChange(event, 'touchdowns')}
+                        />
+                    </div>
+                </Grid>
+
+                <Grid 
+                    item 
+                    xs={2}
+                >
+                    <div className="addGameForm">
+                        <TextField
+                            className="input"
+                            id="outlined-basic"
+                            label="Field Goals" 
+                            variant="outlined"
+                            type='text'
+                            placeholder="Field Goals"
+                            onChange={(event) => this.onChange(event, 'field_goals')}
+                        />
+                    </div>
+
+                    <div className="addGameForm">
+                        <TextField
+                            className="input"
+                            id="outlined-basic"
+                            label="Interceptions" 
+                            variant="outlined"
+                            type='text'
+                            placeholder="Interceptions"
+                            onChange={(event) => this.onChange(event, 'interceptions')}
+                        />
+                    </div>
+                    
+                    <div className="addGameForm">
+                        <TextField
+                            className="input"
+                            id="outlined-basic"
+                            label="Rushing Yards" 
+                            variant="outlined"
+                            type='text'
+                            placeholder="Rushing Yards"
+                            onChange={(event) => this.onChange(event, 'rushing_yards')}
+                        />
+                    </div>
+                </Grid>
+
+                <Grid
+                    item
+                    xs={2}
+                >
+                    <div className="addGameForm">
+                        <TextField
+                            className="input"
+                            id="outlined-basic"
+                            label="Passing Yards" 
+                            variant="outlined"
+                            type='text'
+                            placeholder="Passing Yards"
+                            onChange={(event) => this.onChange(event, 'passing_yards')}
+                        />
+                    </div>
+
+                    <div className="addGameForm">
+                        <TextField
+                            className="input"
+                            id="outlined-basic"
+                            label="Receiving Yards" 
+                            variant="outlined"
+                            type='text'
+                            placeholder="Receiving Yards"
+                            onChange={(event) => this.onChange(event, 'receiving_yards')}
+                        />
+                    </div>
+
+                    <div className="addGameForm">
+                        <FormControl component="fieldset">
+                            <FormLabel component="legend">Outcome</FormLabel>
+                            <RadioGroup row aria-label="Outcome" name="Outcome" value={this.value} onChange={(event) => this.onChange(event, 'isWin')}>
+                                <FormControlLabel value="TRUE" control={<Radio />} label="Win" />
+                                <FormControlLabel value="FALSE" control={<Radio />} label="Loss" />
+                            </RadioGroup>
+                        </FormControl>
+                    </div>
+                </Grid>
+            </Grid>
+
+            <Grid
+                container
+                direction="row"
+                justify="flex-end"
+                alignItems="flex-start"
+            >
+                <Grid
+                    item
+                    xs={1}
+                    className="editBtn"
+                >
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.onAddGame}
+                    >
+                        Add
+                    </Button>
+                </Grid>
+            </Grid>
+        </Paper>
+        );
+    }
 }
 
 export default connect(mapStoreToProps)(AddGame);
