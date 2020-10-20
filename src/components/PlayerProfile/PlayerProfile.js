@@ -62,9 +62,6 @@ class PlayerProfile extends Component {
           </Paper>
         )}
       </>
-
-
-
     );
   }
 }

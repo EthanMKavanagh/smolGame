@@ -7,12 +7,12 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class EditPlayer extends Component {
 
     state = {
-      name: '',
-      age: '',
-      number: '',
-      position: '',
-      height: '',
-      weight: ''
+      name: null,
+      age: null,
+      number: null,
+      position: null,
+      height: null,
+      weight: null
     }
 
     onChange = (event, propertyName) => {
@@ -37,12 +37,12 @@ class EditPlayer extends Component {
           payload: objectToSend
       });
       this.setState({
-        name: '',
-        age: '',
-        number: '',
-        position: '',
-        height: '',
-        weight: ''
+        name: null,
+        age: null,
+        number: null,
+        position: null,
+        height: null,
+        weight: null
       });
 
       this.props.history.push('/home');
