@@ -39,26 +39,29 @@ class PlayerProfile extends Component {
               </Grid>
             </Grid>
 
-            <Grid
-              container
-              direction="row"
-              justify="flex-end"
-              alignItems="flex-start"
-            >
+            {this.props.store.user.authLevel === 'ADMIN' ?
               <Grid
-                item
-                xs={1}
-                className="editBtn"
+                container
+                direction="row"
+                justify="flex-end"
+                alignItems="flex-start"
               >
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={this.onEditPlayer}
+                <Grid
+                  item
+                  xs={1}
+                  className="editBtn"
                 >
-                  Edit
-                </Button>
-              </Grid>
-            </Grid>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={this.onEditPlayer}
+                  >
+                    Edit
+                  </Button>
+                </Grid>
+              </Grid> :
+              <></>
+            }
           </Paper>
         )}
       </>
