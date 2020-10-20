@@ -1,0 +1,14 @@
+.playerProfilePaper {
+    width: 300px;
+    margin: auto;
+}
+
+.playerName {
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+.editBtn {
+    padding-bottom: 5px;
+    padding-right: 75px;
+}

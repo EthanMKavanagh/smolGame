@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {Button} from '@material-ui/core';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Button, Paper, Grid} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+
+import './PlayerProfile.css';
 
 class PlayerProfile extends Component {
 
@@ -13,21 +15,51 @@ class PlayerProfile extends Component {
     return (
       <>
         {this.props.store.individualPlayer.map(player =>
-          <>
-            <h1>Name: {player.name}</h1>
-            <p>Age: {player.age}</p>
-            <p>Number: {player.number}</p>
-            <p>Position: {player.position}</p>
-            <p>Height: {player.height}</p>
-            <p>Weight: {player.weight}</p>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.onEditPlayer}
+          <Paper
+            elevation={3}
+            className="playerProfilePaper"
+          >
+            <h1 className="playerName">{player.name}</h1>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="flex-start"
+              spacing={7}
             >
-              Edit
-            </Button>
-          </>
+              <Grid item>
+                <p>Age: {player.age}</p>
+                <p>Number: {player.number}</p>
+                <p>Position: {player.position}</p>
+              </Grid>
+
+              <Grid item>
+                <p>Height: {player.height}</p>
+                <p>Weight: {player.weight}</p>
+              </Grid>
+            </Grid>
+
+            <Grid
+              container
+              direction="row"
+              justify="flex-end"
+              alignItems="flex-start"
+            >
+              <Grid
+                item
+                xs={1}
+                className="editBtn"
+              >
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.onEditPlayer}
+                >
+                  Edit
+                </Button>
+              </Grid>
+            </Grid>
+          </Paper>
         )}
       </>
 
