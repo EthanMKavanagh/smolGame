@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 // PUT
 router.put('/:id', (req, res) => {
-  let queryString = `UPDATE "team" SET "name" = $1, "coach" = $2, "image_url" = $3, "bio" = $4;`;
+  let queryString = `UPDATE "team" SET "name" = COALESCE($1, "name"), "coach" = COALESCE($2, "coach"), "image_url" = COALESCE($3, "image_url"), "bio" = COALESCE($4, "bio");`;
   pool.query(queryString, [req.body.name, req.body.coach, req.body.image_url, req.body.bio])
     .then(result => {
       res.sendStatus(200);

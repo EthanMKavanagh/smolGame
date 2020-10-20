@@ -9,10 +9,10 @@ import './EditTeam.css';
 class EditTeam extends Component {
 
     state = {
-        name: '',
-        coach: '',
-        image_url: '',
-        bio: ''
+        name: null,
+        coach: null,
+        image_url: null,
+        bio: null
     }
 
     onSave = () => {
@@ -21,10 +21,10 @@ class EditTeam extends Component {
             payload: this.state
         });
         this.setState({
-            name: '',
-            coach: '',
-            image_url: '',
-            bio: ''
+            name: null,
+            coach: null,
+            image_url: null,
+            bio: null
         });
 
         this.props.history.push('/about')
@@ -58,14 +58,14 @@ class EditTeam extends Component {
                                 xs={5}
                             >
                                 <img src={team.image_url} alt='' />
-                                {/* <TextField 
+                                <TextField 
                                     id="outlined-basic"
                                     label="Image URL" 
                                     variant="outlined"
                                     type="text"
                                     placeholder={team.image_url}
                                     onChange={(event) => this.onChange(event, 'image_url')}
-                                /> */}
+                                />
                             </Grid>
 
                             <Grid
@@ -92,10 +92,10 @@ class EditTeam extends Component {
                                     onChange={(event) => this.onChange(event, 'coach')}
                                 />
 
-                                <p>Bio: {team.bio}</p>
+                                <p>{team.bio}</p>
                                 <TextField 
                                     id="outlined-basic"
-                                    label="Boi" 
+                                    label="Bio" 
                                     variant="outlined"
                                     type="text"
                                     placeholder={team.bio}
