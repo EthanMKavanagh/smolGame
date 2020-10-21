@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {TableRow, TableCell, Button} from '@material-ui/core';
+import {TableRow, TableCell, IconButton} from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import '../HomePage/HomePage.css';
@@ -46,12 +47,12 @@ class PlayerList extends Component {
                     align="center"
                     className="tableRow"
                 >
-                    <Button 
-                        color="secondary"
+                    <IconButton 
+                        aria-label="delete"
                         onClick={() => this.onDelete(this.props.player.id)}
                     >
-                        Delete
-                    </Button>
+                        <DeleteIcon />
+                    </IconButton>
                 </TableCell> :
                 <TableCell></TableCell>
                 }

@@ -21,10 +21,11 @@ import PlayerProfile from '../PlayerProfile/PlayerProfile';
 import EditTeam from '../EditTeam/EditTeam';
 import EditPlayer from '../EditPlayer/EditPlayer';
 import CreateTeam from '../CreateTeam/CreateTeam';
+import EditGame from '../EditGame/EditGame';
 
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './App.css';
-import EditSpecificPlayer from '../EditSpecificPlayer/EditSpecificPlayer';
+
 
 
 class App extends Component {
@@ -130,6 +131,12 @@ class App extends Component {
               exact
               path="/create-team"
               component={CreateTeam}
+            />
+
+            <ProtectedRoute 
+              exact
+              path="/games/edit/:id"
+              component={EditGame}
             />
             {/* <ProtectedRoute
               // with authRedirect:

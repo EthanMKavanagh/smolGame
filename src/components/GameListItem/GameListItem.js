@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import {Paper, Grid, Button} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -12,6 +13,10 @@ class GameListItem extends Component {
             type: 'DELETE_GAME',
             payload: id
         });
+    }
+
+    onEdit = (id) => {
+        this.props.history.push(`/games/edit`);
     }
 
     render() {
@@ -68,6 +73,7 @@ class GameListItem extends Component {
                         <Button
                             variant="contained"
                             color="primary"
+                            onClick={() => this.onEdit(this.props.game.id)}
                         >
                             Edit
                         </Button>
@@ -87,4 +93,4 @@ class GameListItem extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(GameListItem);
+export default connect(mapStoreToProps)(withRouter(GameListItem));
