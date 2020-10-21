@@ -69,37 +69,71 @@ class EditSpecificTeam extends Component {
                 item
                 xs={6}
             >
-                <h1>{this.props.team.name}</h1>
-                <TextField
-                    id="outlined-basic"
-                    label="Team Name" 
-                    variant="outlined"
-                    type="text"
-                    value={this.state.name}
-                    onChange={(event) => this.onChange(event, 'name')}
-                />
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                    className="input"
+                >
+                    <Grid item>
+                        <h1>Name:</h1>
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            id="outlined-basic"
+                            label="Team Name" 
+                            variant="outlined"
+                            type="text"
+                            value={this.state.name}
+                            onChange={(event) => this.onChange(event, 'name')}
+                        />
+                    </Grid>
+                </Grid>
 
-                <h3>Coach: {this.props.team.coach}</h3>
-                <TextField 
-                    id="outlined-basic"
-                    label="Coach" 
-                    variant="outlined"
-                    type="text"
-                    size="small"
-                    value={this.state.coach}
-                    onChange={(event) => this.onChange(event, 'coach')}
-                />
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                    className="input"
+                >
+                    <Grid item>
+                        <h3>Coach:</h3>
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            id="outlined-basic"
+                            label="Coach" 
+                            variant="outlined"
+                            type="text"
+                            size="small"
+                            value={this.state.coach}
+                            onChange={(event) => this.onChange(event, 'coach')}
+                        />
+                    </Grid>
+                </Grid>
 
-                <p>{this.props.team.bio}</p>
-                <TextField 
-                    id="outlined-basic"
-                    label="Bio" 
-                    variant="outlined"
-                    type="text"
-                    size="small"
-                    value={this.state.bio}
-                    onChange={(event) => this.onChange(event, 'bio')}
-                />
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                    className="input"
+                >
+                    <Grid item>
+                        <TextField 
+                            id="outlined-multiline-static"
+                            label="Bio"
+                            multiline
+                            rows={4}
+                            defaultValue="Default Value"
+                            variant="outlined"
+                            value={this.state.bio}
+                            onChange={(event) => this.onChange(event, 'bio')}
+                        />
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
 

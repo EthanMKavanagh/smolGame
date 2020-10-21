@@ -50,7 +50,6 @@ class EditSpecificPlayer extends Component {
         this.props.history.push('/home');
       }
   render() {
-      console.log('this.props.player', this.props.player)
     return (
         <>
           <Paper

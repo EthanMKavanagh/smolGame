@@ -8,3 +8,7 @@
 .saveEditTeam {
     padding-bottom: 5px;
 }
+
+#outlined-multiline-static {
+    width: 400px;
+}
