@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Paper, Grid} from '@material-ui/core';
+import {Paper, Grid, Button} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './GameListItem.css';
@@ -46,6 +46,31 @@ class GameListItem extends Component {
                         <h3>Total Rushing Yards: {this.props.game.rushing_yards}</h3>
                         <h3>Total Passing Yards: {this.props.game.passing_yards}</h3>
                         <h3>Total Receiving Yards: {this.props.game.receiving_yards}</h3>
+                    </Grid>
+                </Grid>
+
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-end"
+                    alignItems="center"
+                    className="btnRow"
+                >
+                    <Grid item xs={2}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                        >
+                            Edit
+                        </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                        >
+                            Delete
+                        </Button>
                     </Grid>
                 </Grid>
             </Paper>
