@@ -5,10 +5,19 @@
     width: 900px;
 }
 
-.saveEditTeam {
+#outlined-multiline-static {
+    width: 400px;
+}
+
+.label {
+    padding-right: 5px;
+}
+
+.bottomRow {
+    padding-top: 5px;
     padding-bottom: 5px;
 }
 
-#outlined-multiline-static {
-    width: 400px;
+.imageInput {
+    padding-right: 5px;
 }

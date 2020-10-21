@@ -36,143 +36,136 @@ class EditSpecificTeam extends Component {
         });
     }
 
-  render() {
-    return (
-        <Paper 
-        key={this.props.team.id}
-        elevation={3}
-        className="editTeamPaper"
-    >
-        <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-            spacing={7}
-        >
-            <Grid 
-                item
-                xs={5}
-            >
-                <img src={this.props.team.image_url} alt='' />
-                <TextField 
-                    id="outlined-basic"
-                    label="Image URL" 
-                    variant="outlined"
-                    type="text"
-                    value={this.state.image_url}
-                    onChange={(event) => this.onChange(event, 'image_url')}
-                />
-            </Grid>
-
-            <Grid
-                item
-                xs={6}
+    render() {
+        return (
+            <Paper 
+                key={this.props.team.id}
+                elevation={3}
+                className="editTeamPaper"
             >
                 <Grid
                     container
                     direction="row"
-                    justify="flex-start"
+                    justify="center"
                     alignItems="center"
-                    className="input"
+                    spacing={7}
                 >
-                    <Grid item>
-                        <h1>Name:</h1>
+                    <Grid 
+                        item
+                        xs={5}
+                    >
+                        <img src={this.props.team.image_url} alt='' />
                     </Grid>
-                    <Grid item>
-                        <TextField
-                            id="outlined-basic"
-                            label="Team Name" 
-                            variant="outlined"
-                            type="text"
-                            value={this.state.name}
-                            onChange={(event) => this.onChange(event, 'name')}
-                        />
+
+                    <Grid
+                        item
+                        xs={6}
+                    >
+                        <Grid
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="center"
+                        >
+                            <Grid item>
+                                <h1 className="label">Name:</h1>
+                            </Grid>
+                            <Grid item>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Team Name" 
+                                    variant="outlined"
+                                    type="text"
+                                    value={this.state.name}
+                                    onChange={(event) => this.onChange(event, 'name')}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <Grid
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="center"
+                        >
+                            <Grid item>
+                                <h3 className="label">Coach:</h3>
+                            </Grid>
+                            <Grid item>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Coach" 
+                                    variant="outlined"
+                                    type="text"
+                                    size="small"
+                                    value={this.state.coach}
+                                    onChange={(event) => this.onChange(event, 'coach')}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <Grid
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="center"
+                        >
+                            <Grid item>
+                                <TextField 
+                                    id="outlined-multiline-static"
+                                    label="Bio"
+                                    multiline
+                                    rows={4}
+                                    defaultValue="Default Value"
+                                    variant="outlined"
+                                    value={this.state.bio}
+                                    onChange={(event) => this.onChange(event, 'bio')}
+                                />
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
 
                 <Grid
                     container
                     direction="row"
-                    justify="flex-start"
+                    justify="flex-end"
                     alignItems="center"
-                    className="input"
+                    className="bottomRow"
                 >
-                    <Grid item>
-                        <h3>Coach:</h3>
-                    </Grid>
-                    <Grid item>
+                    <Grid item xs={2} className="imageInput">
                         <TextField
-                            id="outlined-basic"
-                            label="Coach" 
-                            variant="outlined"
-                            type="text"
                             size="small"
-                            value={this.state.coach}
-                            onChange={(event) => this.onChange(event, 'coach')}
-                        />
-                    </Grid>
-                </Grid>
-
-                <Grid
-                    container
-                    direction="row"
-                    justify="flex-start"
-                    alignItems="center"
-                    className="input"
-                >
-                    <Grid item>
-                        <TextField 
-                            id="outlined-multiline-static"
-                            label="Bio"
-                            multiline
-                            rows={4}
-                            defaultValue="Default Value"
+                            id="outlined-basic"
+                            label="Image URL" 
                             variant="outlined"
-                            value={this.state.bio}
-                            onChange={(event) => this.onChange(event, 'bio')}
+                            type="text"
+                            value={this.state.image_url}
+                            onChange={(event) => this.onChange(event, 'image_url')}
                         />
                     </Grid>
+                    <Grid item xs={8}>
+                        {/* TODO!!! */}
+                        <Button
+                            variant="contained"
+                            color="primary"
+                        >
+                            Choose File
+                        </Button>
+                    </Grid>
+                    <Grid item xs={1}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => this.onSave()}
+                        >
+                            Save
+                        </Button>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Grid>
-
-        <Grid
-            container
-            direction="row"
-            justify="flex-end"
-            alignItems="flex-start"
-        >
-            <Grid
-                item
-                xs={8}
-                className="imageFileSource"
-            >
-                {/* TODO!!! */}
-                <Button
-                    variant="contained"
-                    color="primary"
-                >
-                    Choose File
-                </Button>
-            </Grid>
-            <Grid
-                item
-                xs={1}
-                className="saveEditTeam"
-            >
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => this.onSave()}
-                >
-                    Save
-                </Button>
-            </Grid>
-        </Grid>
-    </Paper>
-    );
-  }
+            </Paper>
+        );
+    }
 }
 
 export default connect(mapStoreToProps)(withRouter(EditSpecificTeam));
