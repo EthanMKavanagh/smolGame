@@ -107,6 +107,7 @@ class EditPlayer extends Component {
                       label="Age" 
                       variant="outlined"
                       type="text"
+                      size="small"
                       placeholder={player.age}
                       onChange={(event) => this.onChange(event, 'age')}
                     />
@@ -129,6 +130,7 @@ class EditPlayer extends Component {
                       label="Number" 
                       variant="outlined"
                       type="text"
+                      size="small"
                       placeholder={player.number}
                       onChange={(event) => this.onChange(event, 'number')}
                     />
@@ -151,6 +153,7 @@ class EditPlayer extends Component {
                       label="Position" 
                       variant="outlined"
                       type="text"
+                      size="small"
                       placeholder={player.position}
                       onChange={(event) => this.onChange(event, 'position')}
                     />
@@ -176,6 +179,7 @@ class EditPlayer extends Component {
                       label="Height" 
                       variant="outlined"
                       type="text"
+                      size="small"
                       placeholder={player.height}
                       onChange={(event) => this.onChange(event, 'height')}
                     />
@@ -198,6 +202,7 @@ class EditPlayer extends Component {
                       label="Weight" 
                       variant="outlined"
                       type="text"
+                      size="small"
                       placeholder={player.weight}
                       onChange={(event) => this.onChange(event, 'weight')}
                     />

@@ -21,13 +21,13 @@ router.put('/:id', (req, res) => {
   
   let age = Number(req.body.age);
   let number = Number(req.body.number);
-  let height = Number(req.body.height);
   let weight = Number(req.body.weight);
 
   let queryString = `UPDATE "players" SET "name" = COALESCE($1, "name"), "age" = COALESCE($2, "age"), "number" = COALESCE($3, "number"), 
-                    "position" = COALESCE($4, "position"), "height" = COALESCE($5, "height"), "weight" = COALESCE($6, "weight"), "team_id" = $7 WHERE "id" = $8;`;
+                    "position" = COALESCE($4, "position"), "height" = COALESCE($5, "height"), "weight" = COALESCE($6, "weight"), "team_id" = $7 
+                    WHERE "id" = $8;`;
   pool.query(queryString, [req.body.name, age, number, req.body.position,
-                          height, weight, req.user.team_id, req.params.id])
+                          req.body.height, weight, req.user.team_id, req.params.id])
     .then(result => {
       res.sendStatus(200);
     }).catch(err => {

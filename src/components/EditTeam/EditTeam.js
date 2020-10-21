@@ -88,6 +88,7 @@ class EditTeam extends Component {
                                     label="Coach" 
                                     variant="outlined"
                                     type="text"
+                                    size="small"
                                     placeholder={team.coach}
                                     onChange={(event) => this.onChange(event, 'coach')}
                                 />
@@ -98,6 +99,7 @@ class EditTeam extends Component {
                                     label="Bio" 
                                     variant="outlined"
                                     type="text"
+                                    size="small"
                                     placeholder={team.bio}
                                     onChange={(event) => this.onChange(event, 'bio')}
                                 />

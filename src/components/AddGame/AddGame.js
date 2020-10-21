@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Button, Paper, Grid} from '@material-ui/core';
 
@@ -44,6 +45,7 @@ class AddGame extends Component {
             receiving_yards: '',
             isWin: ''
         });
+        this.props.history.push('/games');
     } // end onAddGame
 
   render() {
@@ -207,4 +209,4 @@ class AddGame extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(AddGame);
+export default connect(mapStoreToProps)(withRouter(AddGame));

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import {withRouter} from 'react-router-dom';
 import {TextField, Button, Grid, Paper} from '@material-ui/core';
 
 import './AddPlayer.css';
@@ -39,6 +40,7 @@ class AddPlayer extends Component {
             height: '',
             weight: ''
         });
+        this.props.history.push('/home');
     } // end onAddPlayer
 
     render() {
@@ -128,7 +130,7 @@ class AddPlayer extends Component {
                                 id="outlined-basic"
                                 label="Height" 
                                 variant="outlined"
-                                type="number"
+                                type="text"
                                 placeholder="Height"
                                 required
                                 onChange={(event) => this.onChange(event, "height")}
@@ -176,4 +178,4 @@ class AddPlayer extends Component {
     } // end render
 } // end Component
 
-export default connect(mapStoreToProps)(AddPlayer);
+export default connect(mapStoreToProps)(withRouter(AddPlayer));

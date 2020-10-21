@@ -5,7 +5,7 @@ const router = express.Router();
 
 // GET
 router.get('/', (req, res) => {
-  let queryString = `SELECT * FROM "players" WHERE "team_id" = $1;`;
+  let queryString = `SELECT * FROM "players" WHERE "team_id" = $1 ORDER BY "id" ASC;`;
   pool.query(queryString, [req.user.team_id])
     .then(result => {
         res.send(result.rows);
