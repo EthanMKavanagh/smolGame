@@ -24,6 +24,7 @@ import CreateTeam from '../CreateTeam/CreateTeam';
 
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './App.css';
+import EditSpecificPlayer from '../EditSpecificPlayer/EditSpecificPlayer';
 
 
 class App extends Component {
