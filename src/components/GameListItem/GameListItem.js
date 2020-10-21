@@ -6,6 +6,14 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import './GameListItem.css';
 
 class GameListItem extends Component {
+
+    onDelete = (id) => {
+        this.props.dispatch({
+            type: 'DELETE_GAME',
+            payload: id
+        });
+    }
+
     render() {
         return (
             <Paper 
@@ -68,6 +76,7 @@ class GameListItem extends Component {
                         <Button
                             variant="contained"
                             color="primary"
+                            onClick={() => this.onDelete(this.props.game.id)}
                         >
                             Delete
                         </Button>

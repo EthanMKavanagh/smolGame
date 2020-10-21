@@ -29,4 +29,16 @@ router.post('/', (req, res) => {
     });
 });
 
+// DELETE/:id
+router.delete('/:id', (req, res) => {
+  let queryString = 'DELETE FROM "games" WHERE "id" = $1;';
+  pool.query(queryString, [req.params.id])
+    .then(result => {
+      res.sendStatus(200);
+    }).catch(err => {
+      console.error('/games DELETE/:id failed', err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
