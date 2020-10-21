@@ -5,6 +5,7 @@ import games from './games.reducer';
 import team from './team.reducer';
 import players from './players.reducer';
 import individualPlayer from './individual.player.reducer';
+import individualGame from './individual.game.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   games,
   team,
   players,
-  individualPlayer
+  individualPlayer,
+  individualGame
 });
 
 export default rootReducer;

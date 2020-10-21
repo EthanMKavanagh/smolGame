@@ -1,0 +1,26 @@
+.title2 {
+    width: 110px;
+    margin-left: -60px;
+}
+
+.title3 {
+    width: 160px;
+}
+
+.title4 {
+    width: 140px;
+}
+
+.editGamePaper {
+    width: 800px;
+    margin: auto;
+}
+
+.isWin {
+    padding-top: 20px;
+}
+
+.edtBtn {
+    padding-right: 20px;
+    padding-bottom: 5px;
+}

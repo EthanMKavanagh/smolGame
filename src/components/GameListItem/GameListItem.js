@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {Paper, Grid, Button} from '@material-ui/core';
+import {Paper, Grid, IconButton} from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './GameListItem.css';
@@ -15,11 +17,18 @@ class GameListItem extends Component {
         });
     }
 
-    onEdit = (id) => {
+    onEdit = (game) => {
+        console.log('Game', game);
+        this.props.dispatch({
+            type: 'SET_INDIVIDUAL_GAME',
+            payload: game
+        });
+
         this.props.history.push(`/games/edit`);
     }
 
     render() {
+        console.log('this.props.game:', this.props.game);
         return (
             <Paper 
                 className="gamePaper" 
@@ -69,23 +78,21 @@ class GameListItem extends Component {
                     alignItems="center"
                     className="btnRow"
                 >
-                    <Grid item xs={2}>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => this.onEdit(this.props.game.id)}
+                    <Grid item xs={1}>
+                        <IconButton
+                            aria-label="edit"
+                            onClick={() => this.onEdit(this.props.game)}
                         >
-                            Edit
-                        </Button>
+                            <EditIcon />
+                        </IconButton>
                     </Grid>
-                    <Grid item xs={2}>
-                        <Button
-                            variant="contained"
-                            color="primary"
+                    <Grid item xs={1}>
+                        <IconButton
+                            aria-label="delete"
                             onClick={() => this.onDelete(this.props.game.id)}
                         >
-                            Delete
-                        </Button>
+                            <DeleteIcon />
+                        </IconButton>
                     </Grid>
                 </Grid>
             </Paper>

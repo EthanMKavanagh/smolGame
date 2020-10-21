@@ -135,7 +135,7 @@ class App extends Component {
 
             <ProtectedRoute 
               exact
-              path="/games/edit/:id"
+              path="/games/edit"
               component={EditGame}
             />
             {/* <ProtectedRoute
