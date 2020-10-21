@@ -74,6 +74,7 @@ class AddGame extends Component {
                             variant="outlined"
                             type='text'
                             placeholder='Game 1 @City'
+                            required
                             onChange={(event) => this.onChange(event, 'name')}
                         />
                     </div>
@@ -86,6 +87,7 @@ class AddGame extends Component {
                             variant="outlined"
                             type='text'
                             placeholder="## - ##"
+                            required
                             onChange={(event) => this.onChange(event, 'score')}
                         />
                     </div>
@@ -98,6 +100,7 @@ class AddGame extends Component {
                             variant="outlined"
                             type='text'
                             placeholder="Touchdowns"
+                            required
                             onChange={(event) => this.onChange(event, 'touchdowns')}
                         />
                     </div>
@@ -115,6 +118,7 @@ class AddGame extends Component {
                             variant="outlined"
                             type='text'
                             placeholder="Field Goals"
+                            required
                             onChange={(event) => this.onChange(event, 'field_goals')}
                         />
                     </div>
@@ -127,6 +131,7 @@ class AddGame extends Component {
                             variant="outlined"
                             type='text'
                             placeholder="Interceptions"
+                            required
                             onChange={(event) => this.onChange(event, 'interceptions')}
                         />
                     </div>
@@ -139,6 +144,7 @@ class AddGame extends Component {
                             variant="outlined"
                             type='text'
                             placeholder="Rushing Yards"
+                            required
                             onChange={(event) => this.onChange(event, 'rushing_yards')}
                         />
                     </div>
@@ -156,6 +162,7 @@ class AddGame extends Component {
                             variant="outlined"
                             type='text'
                             placeholder="Passing Yards"
+                            required
                             onChange={(event) => this.onChange(event, 'passing_yards')}
                         />
                     </div>
@@ -168,14 +175,15 @@ class AddGame extends Component {
                             variant="outlined"
                             type='text'
                             placeholder="Receiving Yards"
+                            required
                             onChange={(event) => this.onChange(event, 'receiving_yards')}
                         />
                     </div>
 
                     <div className="addGameForm">
                         <FormControl component="fieldset">
-                            <FormLabel component="legend">Outcome</FormLabel>
-                            <RadioGroup row aria-label="Outcome" name="Outcome" value={this.value} onChange={(event) => this.onChange(event, 'isWin')}>
+                            <FormLabel required component="legend">Outcome</FormLabel>
+                            <RadioGroup row aria-label="Outcome" name="Outcome"  value={this.value} onChange={(event) => this.onChange(event, 'isWin')}>
                                 <FormControlLabel value="TRUE" control={<Radio />} label="Win" />
                                 <FormControlLabel value="FALSE" control={<Radio />} label="Loss" />
                             </RadioGroup>
