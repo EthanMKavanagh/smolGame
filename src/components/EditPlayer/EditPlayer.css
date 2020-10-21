@@ -1,0 +1,27 @@
+.editPlayerPaper {
+    width: 600px;
+    margin: auto;
+}
+
+.playerName {
+    padding-top: 5px;
+    padding-left: 15px;
+}
+
+.nameTag {
+    padding-right: 5px;
+}
+
+.saveBtn {
+    padding-bottom: 5px;
+    padding-right: 75px;
+}
+
+.subtitle {
+    width: 65px;
+}
+
+.input {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
