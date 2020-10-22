@@ -6,12 +6,14 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-// import '../HomePage/HomePage.css';
-
 const styles = {
     TableCell: {
-        width: '100px',
-        backgroundColor: 'blue'
+      width: '150px',
+      height: '50px'
+    },
+    TableCell2: {
+      width: '50px',
+      height: '50px'
     }
 }
 
@@ -39,22 +41,22 @@ class PlayerList extends Component {
                 <TableCell 
                     component="th"
                     scope="row"
-                    className={classes.TableCell}
                     onClick={this.onPlayerProfile}
+                    className={classes.TableCell}
                 >
                     {this.props.player.name}
                 </TableCell>
                 <TableCell 
                     align="center"
-                    className={classes.TableCell}
                     onClick={this.onPlayerProfile}
+                    className={classes.TableCell2}
                 >
                     {this.props.player.number}
                 </TableCell>
                     {this.props.store.user.authLevel === 'ADMIN' ?
                 <TableCell 
                     align="center"
-                    className={classes.TableCell}
+                    className={classes.TableCell2}
                 >
                     <IconButton 
                         aria-label="delete"
@@ -63,7 +65,7 @@ class PlayerList extends Component {
                         <DeleteIcon />
                     </IconButton>
                 </TableCell> :
-                <TableCell className={classes.TableCell}></TableCell>
+                <></>
                 }
             </TableRow>
         );
