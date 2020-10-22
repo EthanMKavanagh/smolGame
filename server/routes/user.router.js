@@ -21,19 +21,25 @@ router.post('/register', (req, res, next) => {
   const team_id = req.body.team_id;
 
   let queryText = '';
+  let params = [];
   console.log('REGISTER req.body:', req.body);
   if (team_id === '') {
-    queryText = `INSERT INTO "user" ("username", "password", "authLevel", "team_id")
-                VALUES ($1, $2, 'ADMIN', $4);`;
+    queryText = `INSERT INTO "user" ("username", "password", "authLevel")
+                VALUES ($1, $2, $3);`;
+    params = [username, password, 'ADMIN'];
   }
   else {
     queryText = `INSERT INTO "user" ("username", "password", "team_id")
                 VALUES ($1, $2, $3) RETURNING id;`;
+    params = [username, password, team_id];
   }
   pool
-    .query(queryText, [username, password, team_id])
+    .query(queryText, params)
     .then(() => res.sendStatus(201))
-    .catch(() => res.sendStatus(500));
+    .catch((err) => {
+      console.log('Err:', err);
+      res.sendStatus(500)
+    });
 });
 
 // Handles login form authenticate/login POST

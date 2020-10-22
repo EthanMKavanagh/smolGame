@@ -17,14 +17,21 @@ class RegisterForm extends Component {
   registerUser = (event) => {
     event.preventDefault();
 
-      this.props.dispatch({
-        type: 'REGISTER',
-        payload: {
-          username: this.state.username,
-          password: this.state.password,
-          team_id: this.state.team_id
-        }
-      });
+    this.props.dispatch({
+      type: 'REGISTER',
+      payload: {
+        username: this.state.username,
+        password: this.state.password,
+        team_id: this.state.team_id
+      }
+    });
+
+    if (this.state.team_id === '') {
+      this.props.history.push('/create-team');
+    }
+    else {
+      this.props.history.push('/home');
+    }
       
   }; // end registerUser
 
