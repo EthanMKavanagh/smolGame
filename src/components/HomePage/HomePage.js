@@ -1,10 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import PlayerList from '../PlayerList/PlayerList';
 import './HomePage.css';
+
+const styles = {
+  TableCell: {
+    width: '200px',
+    backgroundColor: 'peachpuff'
+  }
+}
 
 class HomePage extends Component {
 
@@ -26,6 +34,7 @@ class HomePage extends Component {
   }
 
   render() {
+    const classes = this.props.classes
     return (
       <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
@@ -39,11 +48,11 @@ class HomePage extends Component {
               <Table aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell className="tableHeading">Name</TableCell>
-                    <TableCell align="center" className="tableHeading">Number</TableCell>
+                    <TableCell className={classes.TableCell}>Name</TableCell>
+                    <TableCell align="center" className={classes.TableCell}>Number</TableCell>
                     {this.props.store.user.authLevel === 'ADMIN' ?
-                      <TableCell className="tableHeading" align="center">Delete</TableCell> :
-                      <TableCell className="tableHeading"></TableCell>
+                      <TableCell className={classes.TableCell} align="center">Delete</TableCell> :
+                      <TableCell className={classes.TableCell}></TableCell>
                     }
                   </TableRow>
                 </TableHead>
@@ -64,4 +73,4 @@ class HomePage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStoreToProps)(HomePage);
+export default connect(mapStoreToProps)(withStyles(styles)(HomePage));

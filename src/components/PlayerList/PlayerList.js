@@ -3,9 +3,17 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {TableRow, TableCell, IconButton} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import '../HomePage/HomePage.css';
+// import '../HomePage/HomePage.css';
+
+const styles = {
+    TableCell: {
+        width: '100px',
+        backgroundColor: 'blue'
+    }
+}
 
 class PlayerList extends Component {
 
@@ -25,19 +33,20 @@ class PlayerList extends Component {
     }
 
     render() {
+        const classes = this.props.classes
         return (
             <TableRow key={this.props.player.id}>
                 <TableCell 
                     component="th"
                     scope="row"
-                    className="tableRow"
+                    className={classes.TableCell}
                     onClick={this.onPlayerProfile}
                 >
                     {this.props.player.name}
                 </TableCell>
                 <TableCell 
                     align="center"
-                    className="tableRow"
+                    className={classes.TableCell}
                     onClick={this.onPlayerProfile}
                 >
                     {this.props.player.number}
@@ -45,7 +54,7 @@ class PlayerList extends Component {
                     {this.props.store.user.authLevel === 'ADMIN' ?
                 <TableCell 
                     align="center"
-                    className="tableRow"
+                    className={classes.TableCell}
                 >
                     <IconButton 
                         aria-label="delete"
@@ -54,10 +63,10 @@ class PlayerList extends Component {
                         <DeleteIcon />
                     </IconButton>
                 </TableCell> :
-                <TableCell></TableCell>
+                <TableCell className={classes.TableCell}></TableCell>
                 }
             </TableRow>
         );
     }
 }
-export default connect(mapStoreToProps)(withRouter(PlayerList));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(PlayerList)));
