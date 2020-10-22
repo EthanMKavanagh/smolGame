@@ -16,7 +16,6 @@ function* fetchIndividualPlayer(action) {
 
 // PUT/:id player
 function* changePlayer(action) {
-    console.log(action.payload);
     yield axios({
         method: 'PUT',
         url: `/individual/player/${action.payload.id}`,
@@ -29,9 +28,9 @@ function* changePlayer(action) {
 } // end changePlayer
 
 // Intake all Saga calls for individualPlayers
-function* playersSaga() {
+function* individualPlayersSaga() {
     yield takeLatest('FETCH_INDIVIDUAL_PLAYER', fetchIndividualPlayer);
     yield takeLatest('CHANGE_PLAYER', changePlayer);
 } // end playersSage
   
-export default playersSaga;
+export default individualPlayersSaga;

@@ -9,6 +9,7 @@ import './EditGame.css';
 class EditGame extends Component {
 
     state = {
+        id: this.props.store.individualGame.id,
         name: this.props.store.individualGame.name,
         score: this.props.store.individualGame.score,
         touchdowns: this.props.store.individualGame.touchdowns,
@@ -21,20 +22,21 @@ class EditGame extends Component {
     }
 
     onSave = () => {
+        let objectToSend = {
+            id: this.state.id,
+            name: this.state.name,
+            score: this.state.score,
+            touchdowns: Number(this.state.touchdowns),
+            field_goals: Number(this.state.field_goals),
+            interceptions: Number(this.state.interceptions),
+            rushing_yards: Number(this.state.rushing_yards),
+            passing_yards: Number(this.state.passing_yards),
+            receiving_yards: Number(this.state.receiving_yards),
+            isWin: this.state.isWin
+        }
         this.props.dispatch({
             type: 'CHANGE_GAME',
-            payload: this.state
-        });
-        this.setState({
-            name: this.props.store.individualGame.name,
-            score: this.props.store.individualGame.score,
-            touchdowns: this.props.store.individualGame.touchdowns,
-            field_goals: this.props.store.individualGame.field_goals,
-            interceptions: this.props.store.individualGame.interceptions,
-            rushing_yards: this.props.store.individualGame.rushing_yards,
-            passing_yards: this.props.store.individualGame.passing_yards,
-            receiving_yards: this.props.store.individualGame.receiving_yards,
-            isWin: this.props.store.individualGame.isWin
+            payload: objectToSend
         });
 
         this.props.history.push('/games')
@@ -109,7 +111,7 @@ class EditGame extends Component {
                     <div>
                         <FormControl  component="fieldset">
                             <FormLabel  component="legend">Outcome</FormLabel>
-                            <RadioGroup  row aria-label="Outcome" name="Outcome"  value={this.value} onChange={(event) => this.onChange(event, 'isWin')}>
+                            <RadioGroup  row aria-label="Outcome" name="Outcome"  defaultValue={this.state.isWin} value={this.value} onChange={(event) => this.onChange(event, 'isWin')}>
                                 <FormControlLabel value="TRUE" control={<Radio />} label="Win" />
                                 <FormControlLabel value="FALSE" control={<Radio />} label="Loss" />
                             </RadioGroup>

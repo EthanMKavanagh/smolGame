@@ -6,6 +6,7 @@ import gamesSaga from './games.saga';
 import teamSaga from './team.saga';
 import playersSaga from './players.saga';
 import individualPlayerSaga from './individual.player.saga';
+import individualGameSaga from './individual.game.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     gamesSaga(),
     teamSaga(),
     playersSaga(),
-    individualPlayerSaga()
+    individualPlayerSaga(),
+    individualGameSaga()
   ]);
 }

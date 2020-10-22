@@ -14,6 +14,7 @@ const gamesRouter = require('./routes/games.router');
 const teamRouter = require('./routes/team.router');
 const playersRouter = require('./routes/players.router');
 const individualPlayerRouter = require('./routes/individual.player.router');
+const individualGameRouter = require('./routes/individual.game.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,6 +33,7 @@ app.use('/games', gamesRouter);
 app.use('/team', teamRouter);
 app.use('/players', playersRouter);
 app.use('/individual/player', individualPlayerRouter);
+app.use('/individual/game', individualGameRouter);
 
 // Serve static files
 app.use(express.static('build'));
