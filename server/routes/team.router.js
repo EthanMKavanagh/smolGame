@@ -1,10 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-// const {rejectUnauthenticated} = require('../modules/authentication-middleware');
+const {rejectUnauthenticated, rejectUser} = require('../modules/authentication-middleware');
 
  // GET
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   let queryString = 'SELECT * FROM "team" WHERE "id" = $1';
   pool.query(queryString, [req.user.team_id])
     .then(result => {
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 });
 
 // PUT
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, rejectUser, (req, res) => {
   let queryString = `UPDATE "team" SET "name" = COALESCE($1, "name"), "coach" = COALESCE($2, "coach"), "image_url" = COALESCE($3, "image_url"), "bio" = COALESCE($4, "bio");`;
   pool.query(queryString, [req.body.name, req.body.coach, req.body.image_url, req.body.bio])
     .then(result => {
@@ -28,7 +28,7 @@ router.put('/:id', (req, res) => {
 });
 
 // POST
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, rejectUser, (req, res) => {
   let queryString = `INSERT INTO "team" ("name", "coach", "image_url", "bio")
                     VALUES ($1, $2, $3, $4);`;
   pool.query(queryString, [req.body.name, req.body.coach, req.body.image_url, req.body.bio])
