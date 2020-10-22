@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Button} from '@material-ui/core';
 import {withRouter} from 'react-router-dom';
-import {Paper, Grid} from '@material-ui/core';
+import {Paper, Grid, IconButton} from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './AboutPage.css';
@@ -69,13 +69,9 @@ class AboutPage extends React.Component {
               >
                 {/* Edit button for Team accessible to only Admins */}
                 {this.props.store.user.authLevel === 'ADMIN' ?
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={this.onEditTeam}
-                  >
-                    Edit
-                  </Button> :
+                  <IconButton onClick={this.onEditTeam}>
+                    <EditIcon />
+                  </IconButton> :
                   <></>
                 }
               </Grid>
