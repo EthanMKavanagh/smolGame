@@ -28,7 +28,7 @@ router.put('/:id', (req, res) => {
 });
 
 // POST
-router.post('/team', (req, res) => {
+router.post('/', (req, res) => {
   let queryString = `INSERT INTO "team" ("name", "coach", "image_url", "bio")
                     VALUES ($1, $2, $3, $4);`;
   pool.query(queryString, [req.body.name, req.body.coach, req.body.image_url, req.body.bio])
