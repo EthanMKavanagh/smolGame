@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import {Button} from '@material-ui/core';
+import {Button, Switch} from '@material-ui/core';
 
 import './RegisterForm.css';
 
@@ -10,32 +10,32 @@ class RegisterForm extends Component {
   state = {
     username: '',
     password: '',
-    team_id: ''
+    team_id: '',
+    checkedA: true
   };
 
   registerUser = (event) => {
     event.preventDefault();
 
-    this.props.dispatch({
-      type: 'REGISTER',
-      payload: {
-        username: this.state.username,
-        password: this.state.password,
-        team_id: this.state.team_id
-      }
-    });
-    // if (this.props.store.user.team_id === null) {
-    //   this.props.history.push('/create-team');
-    // }
-    // else {
-    //   this.props.history.push('/home');
-    // }
+      this.props.dispatch({
+        type: 'REGISTER',
+        payload: {
+          username: this.state.username,
+          password: this.state.password,
+          team_id: this.state.team_id
+        }
+      });
+      
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
+  };
+
+  handleChange = (event) => {
+    this.setState({ ...this.state, [event.target.name]: event.target.checked });
   };
 
   render() {
@@ -71,17 +71,27 @@ class RegisterForm extends Component {
             />
           </label>
         </div>
-        <div>
-          <label htmlFor="team_id">
-            Team ID:
-            <input
-              type="number"
-              name="team_id"
-              value={this.state.team_id}
-              onChange={this.handleInputChangeFor('team_id')}
-            />
-          </label>
-        </div>
+        {this.state.checkedA === true ?
+          <div>
+            <label htmlFor="team_id">
+              Team ID:
+              <input
+                type="number"
+                name="team_id"
+                value={this.state.team_id}
+                onChange={this.handleInputChangeFor('team_id')}
+              />
+            </label>
+          </div> :
+          <></>
+        }
+        
+        <Switch
+          checked={this.state.checkedA}
+          onChange={this.handleChange}
+          name="checkedA"
+          inputProps={{ 'aria-label': 'secondary checkbox' }}
+        />
         <div>
           <Button variant="contained" className="btn" type="submit" name="submit" value="Register">Register</Button>
         </div>
