@@ -36,6 +36,10 @@ class EditSpecificTeam extends Component {
         });
     }
 
+    onCancel = () => {
+        this.props.history.push('/about');
+    }
+
     render() {
         return (
             <Paper 
@@ -129,11 +133,12 @@ class EditSpecificTeam extends Component {
                 <Grid
                     container
                     direction="row"
-                    justify="flex-end"
+                    justify="center"
                     alignItems="center"
                     className="bottomRow"
+                    spacing={2}
                 >
-                    <Grid item xs={2} className="imageInput">
+                    <Grid item xs={3} className="imageInput">
                         <TextField
                             size="small"
                             id="outlined-basic"
@@ -144,13 +149,18 @@ class EditSpecificTeam extends Component {
                             onChange={(event) => this.onChange(event, 'image_url')}
                         />
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={6}>
                         {/* TODO!!! */}
                         <Button
                             variant="contained"
                             color="primary"
                         >
                             Choose File
+                        </Button>
+                    </Grid>
+                    <Grid item className="cancelBtn">
+                        <Button onClick={this.onCancel}>
+                            Cancel
                         </Button>
                     </Grid>
                     <Grid item xs={1}>

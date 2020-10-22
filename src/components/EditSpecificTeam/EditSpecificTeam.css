@@ -21,3 +21,7 @@
 .imageInput {
     padding-right: 5px;
 }
+
+.cancelBtn {
+    margin-right: -60px;
+}

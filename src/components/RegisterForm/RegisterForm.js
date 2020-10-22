@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import {TextField, Button} from '@material-ui/core';
+import {Button} from '@material-ui/core';
+
+import './RegisterForm.css';
 
 class RegisterForm extends Component {
   state = {
@@ -48,10 +50,7 @@ class RegisterForm extends Component {
         <div>
           <label htmlFor="username">
             Username:
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-              label="Username"
+            <input
               type="text"
               name="username"
               value={this.state.username}
@@ -63,10 +62,7 @@ class RegisterForm extends Component {
         <div>
           <label htmlFor="password">
             Password:
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-              label="Password"
+            <input
               type="password"
               name="password"
               value={this.state.password}
@@ -78,10 +74,7 @@ class RegisterForm extends Component {
         <div>
           <label htmlFor="team_id">
             Team ID:
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-              label="Team ID"
+            <input
               type="number"
               name="team_id"
               value={this.state.team_id}
