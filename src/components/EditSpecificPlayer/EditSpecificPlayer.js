@@ -49,6 +49,11 @@ class EditSpecificPlayer extends Component {
   
         this.props.history.push('/home');
       }
+
+      onCancel = () => {
+        this.props.history.push('/home');
+      }
+
   render() {
     return (
         <>
@@ -215,6 +220,11 @@ class EditSpecificPlayer extends Component {
               justify="flex-end"
               alignItems="flex-start"
             >
+              <Grid item xs={2}>
+                <Button onClick={this.onCancel}>
+                  Cancel
+                </Button>
+              </Grid>
               <Grid 
                 item
                 xs={1}
@@ -222,11 +232,11 @@ class EditSpecificPlayer extends Component {
               >
                 {/* Save Button */}
                 <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => this.onSave(this.props.player.id)}
+                  variant="contained"
+                  color="primary"
+                  onClick={() => this.onSave(this.props.player.id)}
                 >
-                    Save
+                  Save
                 </Button>
               </Grid>
             </Grid>
