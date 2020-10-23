@@ -15,8 +15,13 @@ class CreateTeam extends Component {
 
     onCreateTeam = () => {
         this.props.dispatch({
-            method: 'CREATE_TEAM',
+            type: 'CREATE_TEAM',
             payload: this.state
+        });
+
+        this.props.dispatch({
+            type: 'EDIT_USER',
+            payload: ''
         });
 
         this.setState({
@@ -25,6 +30,8 @@ class CreateTeam extends Component {
             image_url: '',
             bio: ''
         });
+
+        this.props.history.push('/home');
     }
 
     onChange = (event, propertyName) => {

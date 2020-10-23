@@ -1,10 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-// const {rejectUnauthenticated} = require('../modules/authentication-middleware');
+const {rejectUnauthenticated, rejectUser} = require('../modules/authentication-middleware');
 
 // GET/:id
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log('req.params GET/:id', req.params);
     let queryString = 'SELECT * FROM "players" WHERE "id" = $1;';
     pool.query(queryString, [req.params.id])
@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
 });
 
 // PUT/:id
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, rejectUser, (req, res) => {
   
   let age = Number(req.body.age);
   let number = Number(req.body.number);

@@ -20,12 +20,26 @@ router.post('/register', (req, res, next) => {
   const password = encryptLib.encryptPassword(req.body.password);
   const team_id = req.body.team_id;
 
-  const queryText = `INSERT INTO "user" ("username", "password", "team_id")
-    VALUES ($1, $2, $3) RETURNING id;`;
+  let queryText = '';
+  let params = [];
+  console.log('REGISTER req.body:', req.body);
+  if (team_id === '') {
+    queryText = `INSERT INTO "user" ("username", "password", "authLevel")
+                VALUES ($1, $2, $3);`;
+    params = [username, password, 'ADMIN'];
+  }
+  else {
+    queryText = `INSERT INTO "user" ("username", "password", "team_id")
+                VALUES ($1, $2, $3) RETURNING id;`;
+    params = [username, password, team_id];
+  }
   pool
-    .query(queryText, [username, password, team_id])
+    .query(queryText, params)
     .then(() => res.sendStatus(201))
-    .catch(() => res.sendStatus(500));
+    .catch((err) => {
+      console.log('Err:', err);
+      res.sendStatus(500)
+    });
 });
 
 // Handles login form authenticate/login POST
