@@ -24,14 +24,17 @@ import CreateTeam from '../CreateTeam/CreateTeam';
 import EditGame from '../EditGame/EditGame';
 
 import mapStoreToProps from '../../redux/mapStoreToProps';
-//import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-//import {amber} from '@material-ui/core/colors';
+// import {createMuiTheme} from '@material-ui/core/styles';
+// import {ThemeProvider} from '@material-ui/core';
+// import {purple} from '@material-ui/core/colors';
 import './App.css';
 
 // const customTheme = createMuiTheme({
 //   palette: {
 //     type: 'dark',
-//     primary: amber,
+//     primary: {
+//       main: purple[500]
+//     },
 //     secondary: '',
 //     error: '',
 //     warning: '',
