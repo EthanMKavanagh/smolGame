@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import {Button, Switch} from '@material-ui/core';
+import {Button, Switch, TextField} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 
 import './RegisterForm.css';
@@ -11,7 +11,10 @@ const styles = {
   Button: {
     backgroundColor: 'black',
     color: 'white',
-    marginLeft: '240px'
+    margin: 'auto'
+  },
+  TextField: {
+    margin: '5px'
   }
 }
 
@@ -44,7 +47,7 @@ class RegisterForm extends Component {
       
   }; // end registerUser
 
-  handleInputChangeFor = (propertyName) => (event) => {
+  handleInputChangeFor = (event, propertyName) => {
     this.setState({
       [propertyName]: event.target.value,
     });
@@ -58,51 +61,48 @@ class RegisterForm extends Component {
     const classes = this.props.classes
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
-        <h2>Register User</h2>
+        {this.state.checkedA ?
+          <h2>Register as a Player</h2> :
+          <h2>Register as a Coach</h2>
+        }
         {this.props.store.errors.registrationMessage && (
           <h3 className="alert" role="alert">
             {this.props.store.errors.registrationMessage}
           </h3>
         )}
-        <div>
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
-              value={this.state.username}
-              required
-              onChange={this.handleInputChangeFor('username')}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              required
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </label>
-        </div>
+         <TextField
+          className={classes.TextField}
+          id="outlined-basic"
+          label="Username" 
+          variant="outlined"
+          type="text"
+          placeholder="Username"
+          onChange={(event) => this.handleInputChangeFor(event, 'username')}
+        />
+         <TextField
+          className={classes.TextField}
+          id="outlined-basic"
+          label="Password" 
+          variant="outlined"
+          type="text"
+          placeholder="Password"
+          onChange={(event) => this.handleInputChangeFor(event, 'password')}
+        />
         {this.state.checkedA === true ?
           <div>
-            <label htmlFor="team_id">
-              Team ID:
-              <input
-                type="number"
-                name="team_id"
-                value={this.state.team_id}
-                onChange={this.handleInputChangeFor('team_id')}
-              />
-            </label>
+            <TextField
+              className={classes.TextField}
+              id="outlined-basic"
+              label="Team ID" 
+              variant="outlined"
+              type="text"
+              placeholder="Team ID"
+              onChange={(event) => this.handleInputChangeFor(event, 'team_id')}
+            />
           </div> :
           <></>
         }
-        
+        <br></br>
         <Switch
           checked={this.state.checkedA}
           onChange={this.handleChange}

@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import {Button} from '@material-ui/core';
+import {Button, TextField} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 
 const styles = {
   Button: {
     backgroundColor: 'black',
     color: 'white',
-    marginLeft: '260px'
+    margin: 'auto'
+  },
+  TextField: {
+    margin: '5px'
   }
 }
 
@@ -34,8 +37,9 @@ class LoginForm extends Component {
     }
   }; // end login
 
-  handleInputChangeFor = (propertyName) => (event) => {
+  handleInputChangeFor = (event, propertyName) => {
     this.setState({
+      ...this.state,
       [propertyName]: event.target.value,
     });
   };
@@ -51,34 +55,25 @@ class LoginForm extends Component {
           </h3>
         )}
         <div>
-          <label htmlFor="username">
-            Username:
-            <input
-              id="outlined-basic"
-              variant="outlined"
-              label="Username"
-              type="text"
-              name="username"
-              required
-              value={this.state.username}
-              onChange={this.handleInputChangeFor('username')}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            Password:
-            <input
-              id="outlined-basic"
-              variant="outlined"
-              label="Password"
-              type="password"
-              name="password"
-              required
-              value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </label>
+        <TextField
+          className={classes.TextField}
+          id="outlined-basic"
+          label="Username" 
+          variant="outlined"
+          type="text"
+          placeholder="Username"
+          onChange={(event) => this.handleInputChangeFor(event, 'username')}
+        />
+
+        <TextField
+          className={classes.TextField}
+          id="outlined-basic"
+          label="Password" 
+          variant="outlined"
+          type="password"
+          placeholder="Password"
+          onChange={(event) => this.handleInputChangeFor(event, 'password')}
+        />
         </div>
         <div>
           <Button variant="contained" className={classes.Button} type="submit" name="submit" value="Log In" >Log In</Button>
