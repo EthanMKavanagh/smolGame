@@ -1,13 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {Paper, Grid, IconButton} from '@material-ui/core';
+import {Paper, Grid, IconButton, Zoom} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './AboutPage.css';
 
 class AboutPage extends React.Component {
+
+  state = {
+    checked: true
+  }
 
   componentDidMount = () => {
     this.getTeam();
@@ -25,8 +29,9 @@ class AboutPage extends React.Component {
   
   render() {
     return (
-      <>
+      <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
         {/* Mapping through the team to render their information */}
+        <div>
         {this.props.store.team.map(team =>
           <Paper 
             elevation={3}
@@ -78,7 +83,8 @@ class AboutPage extends React.Component {
             </Grid>
           </Paper>
         )}
-      </>
+        </div>
+      </Zoom>
     )
   }
 }

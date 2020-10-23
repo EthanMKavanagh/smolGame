@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Button, Paper, Grid} from '@material-ui/core';
+import {Button, Paper, Grid, Zoom} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -15,6 +15,10 @@ const styles = {
 
 class PlayerProfile extends Component {
 
+  state = {
+    checked: true
+  }
+
   onEditPlayer = () => {
     this.props.history.push('/edit/player')
   }
@@ -22,7 +26,8 @@ class PlayerProfile extends Component {
   render() {
     const classes = this.props.classes
     return (
-      <>
+      <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
+      <div>
         {this.props.store.individualPlayer.map(player =>
           <Paper
             elevation={3}
@@ -73,7 +78,8 @@ class PlayerProfile extends Component {
             }
           </Paper>
         )}
-      </>
+      </div>
+      </Zoom>
     );
   }
 }

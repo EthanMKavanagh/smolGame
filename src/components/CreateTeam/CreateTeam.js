@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {TextField, Button} from '@material-ui/core';
+import {TextField, Button, Zoom} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class CreateTeam extends Component {
@@ -10,19 +10,26 @@ class CreateTeam extends Component {
         name: '',
         coach: '',
         image_url: '',
-        bio: ''
+        bio: '',
+        checked: true
     }
 
     onCreateTeam = () => {
+        let objectToSend = {
+            name: this.state.name,
+            coach: this.state.coach,
+            image_url: this.state.image_url,
+            bio: this.state.bio
+        }
         this.props.dispatch({
             type: 'CREATE_TEAM',
-            payload: this.state
+            payload: objectToSend
         });
 
-        this.props.dispatch({
-            type: 'EDIT_USER',
-            payload: ''
-        });
+        // this.props.dispatch({
+        //     type: 'EDIT_USER',
+        //     payload: ''
+        // });
 
         this.setState({
             name: '',
@@ -43,6 +50,7 @@ class CreateTeam extends Component {
 
     render() {
         return (
+            <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
             <div>
                 <h1>Team Name:</h1>
                 <TextField 
@@ -88,6 +96,7 @@ class CreateTeam extends Component {
                     Save
                 </Button>
             </div>
+            </Zoom>
         );
     }
 }

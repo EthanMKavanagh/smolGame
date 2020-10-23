@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import {Zoom} from '@material-ui/core';
 import LoginForm from '../LoginForm/LoginForm';
 
 class LoginPage extends Component {
+
+  state = {
+    checked: true
+  }
+
   render() {
     return (
+      <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
       <div>
         <LoginForm />
 
@@ -21,6 +28,7 @@ class LoginPage extends Component {
           </button>
         </center>
       </div>
+      </Zoom>
     );
   }
 }

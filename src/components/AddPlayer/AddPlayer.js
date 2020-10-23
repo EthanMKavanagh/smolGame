@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import {withRouter} from 'react-router-dom';
-import {TextField, Button, Grid, Paper} from '@material-ui/core';
+import {TextField, Button, Grid, Paper, Zoom} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 
 import './AddPlayer.css';
@@ -23,7 +23,8 @@ class AddPlayer extends Component {
         position: '',
         age: '',
         height: '',
-        weight: ''
+        weight: '',
+        checked: true
     } // end state
 
     // Set state to inputs
@@ -36,9 +37,17 @@ class AddPlayer extends Component {
 
     // Add player to DB
     onAddPlayer = () => {
+        let objectToSend = {
+            name: this.state.name,
+            number: this.state.number,
+            position: this.state.position,
+            age: this.state.age,
+            height: this.state.height,
+            weight: this.state.weight
+        }
         this.props.dispatch({
             type: 'CREATE_NEW_PLAYER',
-            payload: this.state
+            payload: objectToSend
         });
         this.setState({
             name: '',
@@ -54,6 +63,7 @@ class AddPlayer extends Component {
     render() {
         const classes = this.props.classes
         return (
+            <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
             <Paper
                 elevation={3}
                 className="addPlayerPaper"
@@ -183,6 +193,7 @@ class AddPlayer extends Component {
                     </Grid>
                 </Grid>
             </Paper>
+            </Zoom>
         ); // end return
     } // end render
 } // end Component

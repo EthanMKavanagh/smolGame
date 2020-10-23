@@ -50,7 +50,7 @@ class HomePage extends Component {
   render() {
     const classes = this.props.classes
     return (
-      <Zoom in={this.state.checked}>
+      <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
         <div>
           <div className="infoHeading">
             <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>

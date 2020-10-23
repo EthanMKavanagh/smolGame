@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {Button, TextField, Paper, Grid, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio} from '@material-ui/core';
+import {Button, TextField, Paper, Grid, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Zoom} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -26,7 +26,8 @@ class EditGame extends Component {
         rushing_yards: this.props.store.individualGame.rushing_yards,
         passing_yards: this.props.store.individualGame.passing_yards,
         receiving_yards: this.props.store.individualGame.receiving_yards,
-        isWin: this.props.store.individualGame.isWin
+        isWin: this.props.store.individualGame.isWin,
+        checked: true
     }
 
     onSave = () => {
@@ -64,6 +65,7 @@ class EditGame extends Component {
   render() {
     const classes = this.props.classes
     return (
+        <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
         <Paper
             elevation={3}
             className="editGamePaper"
@@ -297,6 +299,7 @@ class EditGame extends Component {
 
             </Grid>
         </Paper>
+        </Zoom>
     );
   }
 }

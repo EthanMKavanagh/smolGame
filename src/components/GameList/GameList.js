@@ -23,8 +23,8 @@ class Games extends Component {
 
     render() {
         return (
-            //<Zoom in={this.state.checked}>
-            <>
+            <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
+            <div>
                 {this.props.store.games.map(game =>
                     <>
                         <GameListItem
@@ -33,8 +33,8 @@ class Games extends Component {
                         />
                     </>
                 )}
-            </>
-            //</Zoom>
+            </div>
+            </Zoom>
         );
     }
 }

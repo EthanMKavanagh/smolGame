@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import {withStyles} from '@material-ui/core/styles';
-import {Button, TextField, Paper, Grid} from '@material-ui/core';
+import {Button, TextField, Paper, Grid, Zoom} from '@material-ui/core';
 import './EditSpecificTeam.css';
 
 const styles = {
@@ -19,7 +19,8 @@ class EditSpecificTeam extends Component {
         name: this.props.team.name,
         coach: this.props.team.coach,
         image_url: this.props.team.image_url,
-        bio: this.props.team.bio
+        bio: this.props.team.bio,
+        checked: true
     }
 
     onSave = () => {
@@ -51,6 +52,7 @@ class EditSpecificTeam extends Component {
     render() {
         const classes = this.props.classes
         return (
+            <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
             <Paper 
                 key={this.props.team.id}
                 elevation={3}
@@ -177,6 +179,7 @@ class EditSpecificTeam extends Component {
                     </Grid>
                 </Grid>
             </Paper>
+            </Zoom>
         );
     }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Button, Paper, Grid} from '@material-ui/core';
+import { TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Button, Paper, Grid, Zoom} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 
 import './AddGame.css';
@@ -25,7 +25,8 @@ class AddGame extends Component {
         rushing_yards: '',
         passing_yards: '',
         receiving_yards: '',
-        isWin: ''
+        isWin: '',
+        checked: true
     } // end state
 
     // Set state to inputs
@@ -38,9 +39,21 @@ class AddGame extends Component {
 
     // Add game to DB
     onAddGame = () => {
+        let objectToSend = {
+            name: this.state.name,
+            score: this.state.score,
+            touchdowns: this.state.touchdowns,
+            field_goals: this.state.field_goals,
+            interceptions: this.state.interceptions,
+            rushing_yards: this.state.rushing_yards,
+            passing_yards: this.state.passing_yards,
+            receiving_yards: this.state.receiving_yards,
+            isWin: this.state.isWin
+        }
+
         this.props.dispatch({
             type: 'CREATE_NEW_GAME',
-            payload: this.state
+            payload: objectToSend
         });
         this.setState({
             name: '',
@@ -59,6 +72,7 @@ class AddGame extends Component {
   render() {
     const classes = this.props.classes
     return (
+        <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
         <Paper
             elevation={3}
             className="addGamePaper"
@@ -222,6 +236,7 @@ class AddGame extends Component {
                 </Grid>
             </Grid>
         </Paper>
+        </Zoom>
         );
     }
 }

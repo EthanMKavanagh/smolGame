@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {Paper, Grid, TextField, Button} from '@material-ui/core';
+import {Paper, Grid, TextField, Button, Zoom} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -22,7 +22,8 @@ class EditSpecificPlayer extends Component {
         number: this.props.player.number,
         position: this.props.player.position,
         height: this.props.player.height,
-        weight: this.props.player.weight
+        weight: this.props.player.weight,
+        checked: true
       }
   
       onChange = (event, propertyName) => {
@@ -65,7 +66,7 @@ class EditSpecificPlayer extends Component {
   render() {
     const classes = this.props.classes
     return (
-        <>
+        <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
           <Paper
             elevation={3}
             className="editPlayerPaper"
@@ -253,7 +254,7 @@ class EditSpecificPlayer extends Component {
               </Grid>
             </Grid>
           </Paper>
-      </>
+      </Zoom>
     );
   }
 }
