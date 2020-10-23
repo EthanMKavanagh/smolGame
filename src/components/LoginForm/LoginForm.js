@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import {TextField, Button} from '@material-ui/core';
+import {Button} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
+
+const styles = {
+  Button: {
+    backgroundColor: 'black',
+    color: 'white',
+    marginLeft: '260px'
+  }
+}
 
 class LoginForm extends Component {
   state = {
@@ -32,6 +41,7 @@ class LoginForm extends Component {
   };
 
   render() {
+    const classes = this.props.classes
     return (
       <form className="formPanel" onSubmit={this.login}>
         <h2>Login</h2>
@@ -71,11 +81,11 @@ class LoginForm extends Component {
           </label>
         </div>
         <div>
-          <Button variant="contained" className="btn" type="submit" name="submit" value="Log In" >Log In</Button>
+          <Button variant="contained" className={classes.Button} type="submit" name="submit" value="Log In" >Log In</Button>
         </div>
       </form>
     );
   }
 }
 
-export default connect(mapStoreToProps)(LoginForm);
+export default connect(mapStoreToProps)(withStyles(styles)(LoginForm));

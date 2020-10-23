@@ -74,31 +74,34 @@ class GameListItem extends Component {
                         </Grid>
                     </Grid>
 
-                    <Grid
-                        container
-                        direction="row"
-                        justify="flex-end"
-                        alignItems="center"
-                        className="btnRow"
-                    >
-                        <Grid item xs={1}>
-                            <IconButton
-                                aria-label="edit"
-                                onClick={() => this.onEdit(this.props.game)}
-                            >
-                                <EditIcon />
-                            </IconButton>
-                        </Grid>
-                        <Grid item xs={1}>
-                            <IconButton
-                                aria-label="delete"
-                                onClick={() => this.onDelete(this.props.game.id)}
-                            >
-                                <DeleteIcon />
-                            </IconButton>
-                        </Grid>
+                {this.props.store.user.authLevel === 'ADMIN' ?
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-end"
+                    alignItems="center"
+                    className="btnRow"
+                >
+                    <Grid item xs={1}>
+                        <IconButton
+                            aria-label="edit"
+                            onClick={() => this.onEdit(this.props.game)}
+                        >
+                            <EditIcon />
+                        </IconButton>
                     </Grid>
-                </Paper>
+                    <Grid item xs={1}>
+                        <IconButton
+                            aria-label="delete"
+                            onClick={() => this.onDelete(this.props.game.id)}
+                        >
+                            <DeleteIcon />
+                        </IconButton>
+                    </Grid>
+                </Grid> :
+                <></>
+                }  
+             </Paper>
             //</Zoom>
         );
     }

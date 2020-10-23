@@ -44,7 +44,7 @@ class PlayerProfile extends Component {
 
               <Grid item>
                 <p>Height: {player.height}</p>
-                <p>Weight: {player.weight}</p>
+                <p>Weight: {player.weight} lbs</p>
               </Grid>
             </Grid>
 
