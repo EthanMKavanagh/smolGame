@@ -62,7 +62,7 @@ class PlayerList extends Component {
                         aria-label="delete"
                         onClick={() => this.onDelete(this.props.player.id)}
                     >
-                        <DeleteIcon />
+                        <DeleteIcon/>
                     </IconButton>
                 </TableCell> :
                 <></>

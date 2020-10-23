@@ -2,8 +2,16 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import {withStyles} from '@material-ui/core/styles';
 import {Button, TextField, Paper, Grid} from '@material-ui/core';
 import './EditSpecificTeam.css';
+
+const styles = {
+    Button: {
+        backgroundColor: 'black',
+        color: 'white'
+    }
+}
 
 class EditSpecificTeam extends Component {
 
@@ -41,6 +49,7 @@ class EditSpecificTeam extends Component {
     }
 
     render() {
+        const classes = this.props.classes
         return (
             <Paper 
                 key={this.props.team.id}
@@ -138,7 +147,7 @@ class EditSpecificTeam extends Component {
                     className="bottomRow"
                     spacing={2}
                 >
-                    <Grid item xs={3} className="imageInput">
+                    <Grid item xs={9} className="imageInput">
                         <TextField
                             size="small"
                             id="outlined-basic"
@@ -149,24 +158,18 @@ class EditSpecificTeam extends Component {
                             onChange={(event) => this.onChange(event, 'image_url')}
                         />
                     </Grid>
-                    <Grid item xs={6}>
-                        {/* TODO!!! */}
-                        <Button
-                            variant="contained"
-                            color="primary"
-                        >
-                            Choose File
-                        </Button>
-                    </Grid>
                     <Grid item className="cancelBtn">
-                        <Button onClick={this.onCancel}>
+                        <Button 
+                            onClick={this.onCancel}
+                            className={classes.Button}
+                        >
                             Cancel
                         </Button>
                     </Grid>
                     <Grid item xs={1}>
                         <Button
                             variant="contained"
-                            color="primary"
+                            className={classes.Button}
                             onClick={() => this.onSave()}
                         >
                             Save
@@ -178,4 +181,4 @@ class EditSpecificTeam extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(withRouter(EditSpecificTeam));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(EditSpecificTeam)));

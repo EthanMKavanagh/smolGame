@@ -3,8 +3,16 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { TextField, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Button, Paper, Grid} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
 
 import './AddGame.css';
+
+const styles = {
+    Button: {
+        backgroundColor: 'black',
+        color: 'white'
+    }
+}
 
 class AddGame extends Component {
 
@@ -49,6 +57,7 @@ class AddGame extends Component {
     } // end onAddGame
 
   render() {
+    const classes = this.props.classes
     return (
         <Paper
             elevation={3}
@@ -205,7 +214,7 @@ class AddGame extends Component {
                 >
                     <Button
                         variant="contained"
-                        color="primary"
+                        className={classes.Button}
                         onClick={this.onAddGame}
                     >
                         Add
@@ -217,4 +226,4 @@ class AddGame extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(withRouter(AddGame));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(AddGame)));

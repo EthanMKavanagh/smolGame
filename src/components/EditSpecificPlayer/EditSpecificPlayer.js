@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {Paper, Grid, TextField, Button} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './EditSpecificPlayer.css';
+
+const styles = {
+  Button: {
+    backgroundColor: 'black',
+    color: 'white'
+  }
+}
 
 class EditSpecificPlayer extends Component {
 
@@ -55,6 +63,7 @@ class EditSpecificPlayer extends Component {
       }
 
   render() {
+    const classes = this.props.classes
     return (
         <>
           <Paper
@@ -221,7 +230,10 @@ class EditSpecificPlayer extends Component {
               alignItems="flex-start"
             >
               <Grid item xs={2}>
-                <Button onClick={this.onCancel}>
+                <Button 
+                  onClick={this.onCancel}
+                  className={classes.Button}
+                >
                   Cancel
                 </Button>
               </Grid>
@@ -233,7 +245,7 @@ class EditSpecificPlayer extends Component {
                 {/* Save Button */}
                 <Button
                   variant="contained"
-                  color="primary"
+                  className={classes.Button}
                   onClick={() => this.onSave(this.props.player.id)}
                 >
                   Save
@@ -246,4 +258,4 @@ class EditSpecificPlayer extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(withRouter(EditSpecificPlayer));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(EditSpecificPlayer)));

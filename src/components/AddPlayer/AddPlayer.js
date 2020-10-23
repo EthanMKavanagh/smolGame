@@ -3,8 +3,16 @@ import {connect} from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import {withRouter} from 'react-router-dom';
 import {TextField, Button, Grid, Paper} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
 
 import './AddPlayer.css';
+
+const styles = {
+    Button: {
+        backgroundColor: 'black',
+        color: 'white'
+    }
+}
 
 class AddPlayer extends Component {
 
@@ -44,6 +52,7 @@ class AddPlayer extends Component {
     } // end onAddPlayer
 
     render() {
+        const classes = this.props.classes
         return (
             <Paper
                 elevation={3}
@@ -166,7 +175,7 @@ class AddPlayer extends Component {
                         {/* Button to submit New Player */}
                         <Button
                             variant="contained"
-                            color="primary"
+                            className={classes.Button}
                             onClick={this.onAddPlayer}
                         >
                             Add
@@ -178,4 +187,4 @@ class AddPlayer extends Component {
     } // end render
 } // end Component
 
-export default connect(mapStoreToProps)(withRouter(AddPlayer));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(AddPlayer)));
