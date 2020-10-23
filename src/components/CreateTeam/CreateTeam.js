@@ -5,8 +5,6 @@ import {TextField, Button, Zoom, Paper, Grid} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
-import './CreateTeam.css';
-
 const styles = {
     Button: {
         backgroundColor: 'black',
