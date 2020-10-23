@@ -104,10 +104,13 @@ class RegisterForm extends Component {
         }
         <br></br>
         <Switch
+          className={classes.switch}
           checked={this.state.checkedA}
           onChange={this.handleChange}
           name="checkedA"
-          inputProps={{ 'aria-label': 'secondary checkbox' }}
+          color="default"
+          inputProps={{ 'aria-label': 'checkbox with default color' }}
+  
         />
         <div>
           <Button variant="contained" className={classes.Button} type="submit" name="submit" value="Register">Register</Button>
