@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {Button, TextField, Paper, Grid, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './EditGame.css';
+
+const styles = {
+    Button: {
+        backgroundColor: 'black',
+        color: 'white'
+    }
+}
 
 class EditGame extends Component {
 
@@ -54,6 +62,7 @@ class EditGame extends Component {
     }
 
   render() {
+    const classes = this.props.classes
     return (
         <Paper
             elevation={3}
@@ -270,12 +279,18 @@ class EditGame extends Component {
                 alignItems="center"
             >
                 <Grid item className="edtBtn">
-                    <Button onClick={this.onCancel}>
+                    <Button 
+                        onClick={this.onCancel}
+                        className={classes.Button}
+                    >
                         Cancel
                     </Button>
                 </Grid>
                 <Grid item className="edtBtn">
-                    <Button onClick={this.onSave}>
+                    <Button 
+                        onClick={this.onSave} 
+                        className={classes.Button}
+                    >
                         Save
                     </Button>
                 </Grid>
@@ -286,4 +301,4 @@ class EditGame extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(withRouter(EditGame));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(EditGame)));

@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button, Paper, Grid} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './PlayerProfile.css';
+
+const styles = {
+  Button: {
+      backgroundColor: 'black',
+      color: 'white'
+  }
+}
 
 class PlayerProfile extends Component {
 
@@ -12,6 +20,7 @@ class PlayerProfile extends Component {
   }
 
   render() {
+    const classes = this.props.classes
     return (
       <>
         {this.props.store.individualPlayer.map(player =>
@@ -35,7 +44,7 @@ class PlayerProfile extends Component {
 
               <Grid item>
                 <p>Height: {player.height}</p>
-                <p>Weight: {player.weight}</p>
+                <p>Weight: {player.weight} lbs</p>
               </Grid>
             </Grid>
 
@@ -53,7 +62,7 @@ class PlayerProfile extends Component {
                 >
                   <Button
                     variant="contained"
-                    color="primary"
+                    className={classes.Button}
                     onClick={this.onEditPlayer}
                   >
                     Edit
@@ -69,4 +78,4 @@ class PlayerProfile extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(PlayerProfile);
+export default connect(mapStoreToProps)(withStyles(styles)(PlayerProfile));

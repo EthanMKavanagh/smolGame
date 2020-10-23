@@ -3,8 +3,17 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import {Button, Switch} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
 
 import './RegisterForm.css';
+
+const styles = {
+  Button: {
+    backgroundColor: 'black',
+    color: 'white',
+    marginLeft: '240px'
+  }
+}
 
 class RegisterForm extends Component {
   state = {
@@ -46,6 +55,7 @@ class RegisterForm extends Component {
   };
 
   render() {
+    const classes = this.props.classes
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
         <h2>Register User</h2>
@@ -100,11 +110,11 @@ class RegisterForm extends Component {
           inputProps={{ 'aria-label': 'secondary checkbox' }}
         />
         <div>
-          <Button variant="contained" className="btn" type="submit" name="submit" value="Register">Register</Button>
+          <Button variant="contained" className={classes.Button} type="submit" name="submit" value="Register">Register</Button>
         </div>
       </form>
     );
   }
 }
 
-export default connect(mapStoreToProps)(withRouter(RegisterForm));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(RegisterForm)));

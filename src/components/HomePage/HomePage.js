@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
+import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Zoom} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -26,6 +26,10 @@ const styles = {
 
 class HomePage extends Component {
 
+  state = {
+    checked: true
+  }
+
   componentDidMount = () => {
     this.getTeam();
     this.getPlayers();
@@ -46,40 +50,42 @@ class HomePage extends Component {
   render() {
     const classes = this.props.classes
     return (
-      <div>
-        <div className="infoHeading">
-          <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
-          {this.props.store.user.authLevel === 'ADMIN' ?
-            <p>Invite others by giving them your Team ID: {this.props.store.user.team_id}</p> :
-            <></>
-          }
-        </div>
+      <Zoom in={this.state.checked}>
+        <div>
+          <div className="infoHeading">
+            <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
+            {this.props.store.user.authLevel === 'ADMIN' ?
+              <p>Invite others by giving them your Team ID: {this.props.store.user.team_id}</p> :
+              <></>
+            }
+          </div>
 
-        <Paper elevation={3} className={classes.Table}>
-            <TableContainer >
-              <Table aria-label="simple table" className={classes.Table}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell className={classes.TableCell}>Name</TableCell>
-                    <TableCell align="center" className={classes.TableCell2}>Number</TableCell>
-                    {this.props.store.user.authLevel === 'ADMIN' ?
-                      <TableCell align="right" className={classes.TableCell2}></TableCell> :
-                      <></>
-                    }
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {this.props.store.players.map(player =>
-                    <PlayerList 
-                      player={player}
-                      key={player.id}
-                    />
-                  )}
-                </TableBody>
-              </Table>
-            </TableContainer>
-        </Paper>
-      </div>
+          <Paper elevation={3} className={classes.Table}>
+              <TableContainer >
+                <Table aria-label="simple table" className={classes.Table}>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell className={classes.TableCell}>Name</TableCell>
+                      <TableCell align="center" className={classes.TableCell2}>Number</TableCell>
+                      {this.props.store.user.authLevel === 'ADMIN' ?
+                        <TableCell align="right" className={classes.TableCell2}></TableCell> :
+                        <></>
+                      }
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.props.store.players.map(player =>
+                      <PlayerList 
+                        player={player}
+                        key={player.id}
+                      />
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+          </Paper>
+        </div>
+      </Zoom>
     );
   }
 }

@@ -25,3 +25,8 @@
 .cancelBtn {
     margin-right: -60px;
 }
+
+.button {
+    background-color: black;
+    color: white;
+}

@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Zoom} from '@material-ui/core';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import GameListItem from '../GameListItem/GameListItem';
 
 class Games extends Component {
+
+    state = {
+        checked: true
+    }
 
     componentDidMount = () => {
         this.getGames();
@@ -18,7 +23,8 @@ class Games extends Component {
 
     render() {
         return (
-            <div>
+            //<Zoom in={this.state.checked}>
+            <>
                 {this.props.store.games.map(game =>
                     <>
                         <GameListItem
@@ -27,7 +33,8 @@ class Games extends Component {
                         />
                     </>
                 )}
-            </div>
+            </>
+            //</Zoom>
         );
     }
 }
