@@ -8,7 +8,7 @@
 
 .nav {
   margin: 0 0 30px;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(139,69,19,1) 0%, rgba(255,255,255,1) 50%, rgba(0,128,0,1) 100%);
+  background-color: #228B22;
   overflow: hidden;
 }
 

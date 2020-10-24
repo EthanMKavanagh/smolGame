@@ -3,9 +3,16 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {Paper, Grid, IconButton, Zoom} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './AboutPage.css';
+
+const styles = {
+  IconButton: {
+    color: '#323232'
+  }
+}
 
 class AboutPage extends React.Component {
 
@@ -28,6 +35,7 @@ class AboutPage extends React.Component {
   }
   
   render() {
+    const classes = this.props.classes
     return (
       <Zoom in={this.state.checked} style={{ transitionDelay: this.state.checked ? '100ms' : '0ms' }}>
         {/* Mapping through the team to render their information */}
@@ -75,7 +83,7 @@ class AboutPage extends React.Component {
                 {/* Edit button for Team accessible to only Admins */}
                 {this.props.store.user.authLevel === 'ADMIN' ?
                   <IconButton onClick={this.onEditTeam}>
-                    <EditIcon />
+                    <EditIcon className={classes.IconButton}/>
                   </IconButton> :
                   <></>
                 }
@@ -89,4 +97,4 @@ class AboutPage extends React.Component {
   }
 }
 
-export default connect(mapStoreToProps)(withRouter(AboutPage));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(AboutPage)));

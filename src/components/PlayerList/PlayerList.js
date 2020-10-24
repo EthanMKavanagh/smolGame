@@ -14,6 +14,9 @@ const styles = {
     TableCell2: {
       width: '50px',
       height: '50px'
+    },
+    IconButton: {
+        color: '#323232'
     }
 }
 
@@ -62,7 +65,7 @@ class PlayerList extends Component {
                         aria-label="delete"
                         onClick={() => this.onDelete(this.props.player.id)}
                     >
-                        <DeleteIcon/>
+                        <DeleteIcon className={classes.IconButton}/>
                     </IconButton>
                 </TableCell> :
                 <></>
