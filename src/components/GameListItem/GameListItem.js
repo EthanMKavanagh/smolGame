@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {Paper, Grid, IconButton, Zoom} from '@material-ui/core';
+import {Paper, Grid, IconButton} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './GameListItem.css';
 
-class GameListItem extends Component {
+const styles = {
+    IconButton: {
+      color: '#323232'
+    }
+}
 
-    // state = {
-    //     checked: true
-    // }
+class GameListItem extends Component {
 
     onDelete = (id) => {
         this.props.dispatch({
@@ -32,8 +35,8 @@ class GameListItem extends Component {
     }
 
     render() {
+        const classes = this.props.classes
         return (
-            //<Zoom in={this.state.checked}>
                 <Paper 
                     className="gamePaper" 
                     elevation={3}
@@ -87,7 +90,7 @@ class GameListItem extends Component {
                             aria-label="edit"
                             onClick={() => this.onEdit(this.props.game)}
                         >
-                            <EditIcon />
+                            <EditIcon className={classes.IconButton}/>
                         </IconButton>
                     </Grid>
                     <Grid item xs={1}>
@@ -95,7 +98,7 @@ class GameListItem extends Component {
                             aria-label="delete"
                             onClick={() => this.onDelete(this.props.game.id)}
                         >
-                            <DeleteIcon />
+                            <DeleteIcon className={classes.IconButton}/>
                         </IconButton>
                     </Grid>
                 </Grid> :
@@ -107,4 +110,4 @@ class GameListItem extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(withRouter(GameListItem));
+export default connect(mapStoreToProps)(withStyles(styles)(withRouter(GameListItem)));

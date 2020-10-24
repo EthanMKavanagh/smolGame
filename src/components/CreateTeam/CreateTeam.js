@@ -7,7 +7,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 const styles = {
     Button: {
-        backgroundColor: 'black',
+        backgroundColor: '#323232',
         color: 'white',
         marginRight: '-100px'
     },

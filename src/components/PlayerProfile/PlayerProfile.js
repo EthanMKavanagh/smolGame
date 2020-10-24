@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Button, Paper, Grid, Zoom} from '@material-ui/core';
+import {IconButton, Paper, Grid, Zoom} from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 import {withStyles} from '@material-ui/core/styles';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './PlayerProfile.css';
 
 const styles = {
-  Button: {
-      backgroundColor: 'black',
-      color: 'white'
+  IconButton: {
+    color: '#323232'
   }
 }
 
@@ -65,13 +65,12 @@ class PlayerProfile extends Component {
                   xs={1}
                   className="editBtn"
                 >
-                  <Button
+                  <IconButton
                     variant="contained"
-                    className={classes.Button}
                     onClick={this.onEditPlayer}
                   >
-                    Edit
-                  </Button>
+                    <EditIcon className={classes.IconButton}/>
+                  </IconButton>
                 </Grid>
               </Grid> :
               <></>
