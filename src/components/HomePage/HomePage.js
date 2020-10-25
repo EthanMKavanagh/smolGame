@@ -55,7 +55,7 @@ class HomePage extends Component {
           <div className="infoHeading">
             <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
             {this.props.store.user.authLevel === 'ADMIN' ?
-              <p>Invite others by giving them your Team ID: {this.props.store.user.team_id}</p> :
+              <p>Invite others with your Team ID: {this.props.store.user.team_id}</p> :
               <></>
             }
           </div>

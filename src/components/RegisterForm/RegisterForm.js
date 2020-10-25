@@ -84,7 +84,7 @@ class RegisterForm extends Component {
           id="outlined-basic"
           label="Password" 
           variant="outlined"
-          type="text"
+          type="password"
           placeholder="Password"
           onChange={(event) => this.handleInputChangeFor(event, 'password')}
         />
