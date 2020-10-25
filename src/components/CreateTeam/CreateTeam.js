@@ -179,7 +179,7 @@ class CreateTeam extends Component {
                             <Button
                                 variant="contained"
                                 className={classes.Button}
-                                onClick={() => this.onSave()}
+                                onClick={() => this.onCreateTeam()}
                             >
                                 Continue
                             </Button>
